@@ -1,0 +1,694 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dashboard Admin - CPCL Dinas Pertanian</title>
+    <!-- Bootstrap CSS -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <!-- Font Awesome -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <!-- Google Fonts -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <!-- Chart.js -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/chart.js@4.0.0/dist/Chart.min.css"
+    />
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="../assets/css/style.css" />
+    <link rel="stylesheet" href="../assets/css/dashboard.css" />
+  </head>
+  <body>
+    <div class="d-flex" id="wrapper">
+      <!-- Sidebar -->
+      <div class="bg-white border-end" id="sidebar-wrapper">
+        <div class="sidebar-heading text-center py-4 border-bottom">
+          <img
+            src="../assets/img/logo.svg"
+            alt="Logo"
+            height="50"
+            class="mb-2"
+          />
+          <div class="fs-5 fw-semibold">CPCL Pertanian</div>
+          <div class="small text-muted">Admin</div>
+        </div>
+        <div class="list-group list-group-flush sidebar-nav">
+          <a
+            href="dashboard.html"
+            class="list-group-item list-group-item-action active py-3"
+          >
+            <i class="fas fa-tachometer-alt me-2"></i> Dashboard
+          </a>
+          <a
+            href="pengajuan.html"
+            class="list-group-item list-group-item-action py-3"
+          >
+            <i class="fas fa-file-alt me-2"></i> Pengajuan Bantuan
+          </a>
+          <a
+            href="kelompok-tani.html"
+            class="list-group-item list-group-item-action py-3"
+          >
+            <i class="fas fa-users me-2"></i> Kelompok Tani
+          </a>
+          <a
+            href="laporan.html"
+            class="list-group-item list-group-item-action py-3"
+          >
+            <i class="fas fa-chart-bar me-2"></i> Laporan
+          </a>
+          <a
+            href="pengaturan.html"
+            class="list-group-item list-group-item-action py-3"
+          >
+            <i class="fas fa-cog me-2"></i> Pengaturan
+          </a>
+        </div>
+        <div class="mt-auto border-top p-3">
+          <a href="../login.html" class="btn btn-outline-danger d-block">
+            <i class="fas fa-sign-out-alt me-2"></i> Keluar
+          </a>
+        </div>
+      </div>
+
+      <!-- Page Content -->
+      <div id="page-content-wrapper">
+        <!-- Top navigation -->
+        <nav
+          class="navbar navbar-expand-lg navbar-light bg-white border-bottom py-3"
+        >
+          <div class="container-fluid">
+            <button class="btn" id="sidebarToggle">
+              <i class="fas fa-bars"></i>
+            </button>
+            <div class="d-none d-md-block ms-2">
+              <h5 class="mb-0">Dashboard Admin</h5>
+            </div>
+            <div class="ms-auto d-flex align-items-center">
+              <div class="dropdown me-3">
+                <a
+                  class="nav-link dropdown-toggle"
+                  href="#"
+                  role="button"
+                  id="notificationDropdown"
+                  data-bs-toggle="dropdown"
+                  aria-expanded="false"
+                >
+                  <i class="fas fa-bell position-relative">
+                    <span
+                      class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger"
+                      >5</span
+                    >
+                  </i>
+                </a>
+                <ul
+                  class="dropdown-menu dropdown-menu-end shadow-sm"
+                  aria-labelledby="notificationDropdown"
+                >
+                  <li><h6 class="dropdown-header">Notifikasi</h6></li>
+                  <li><hr class="dropdown-divider" /></li>
+                  <li>
+                    <a class="dropdown-item" href="#">Pengajuan bantuan baru</a>
+                  </li>
+                  <li>
+                    <a class="dropdown-item" href="#"
+                      >Persetujuan dari Kepala Dinas</a
+                    >
+                  </li>
+                  <li>
+                    <a class="dropdown-item" href="#"
+                      >Pendaftaran kelompok tani baru</a
+                    >
+                  </li>
+                  <li>
+                    <a class="dropdown-item" href="#"
+                      >Pengajuan menunggu verifikasi</a
+                    >
+                  </li>
+                  <li>
+                    <a class="dropdown-item" href="#">Pengajuan disetujui</a>
+                  </li>
+                </ul>
+              </div>
+
+              <div
+                class="avatar-sm bg-primary rounded-circle text-white me-2 d-flex align-items-center justify-content-center"
+              >
+                AD
+              </div>
+              <span class="d-none d-md-block">Admin Dinas</span>
+            </div>
+          </div>
+        </nav>
+
+        <!-- Main content -->
+        <div class="container-fluid p-4">
+          <!-- Summary Cards -->
+          <div class="row g-4 mb-4">
+            <div class="col-md-3">
+              <div
+                class="card border-0 shadow-sm h-100 animation-fade-in-up"
+                style="--delay: 0.1s"
+              >
+                <div class="card-body">
+                  <div class="d-flex align-items-center mb-3">
+                    <div class="flex-shrink-0">
+                      <div
+                        class="avatar bg-primary-subtle text-primary rounded"
+                      >
+                        <i class="fas fa-users"></i>
+                      </div>
+                    </div>
+                    <div class="flex-grow-1 ms-3">
+                      <h6 class="mb-0">Kelompok Tani</h6>
+                      <h3 class="fw-bold mb-0">125</h3>
+                    </div>
+                  </div>
+                  <div class="progress" style="height: 6px">
+                    <div
+                      class="progress-bar bg-primary"
+                      role="progressbar"
+                      style="width: 75%"
+                    ></div>
+                  </div>
+                  <div class="d-flex align-items-center mt-3">
+                    <span class="text-success me-2"
+                      ><i class="fas fa-arrow-up"></i> 12%</span
+                    >
+                    <span class="text-muted small">dari bulan lalu</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-md-3">
+              <div
+                class="card border-0 shadow-sm h-100 animation-fade-in-up"
+                style="--delay: 0.2s"
+              >
+                <div class="card-body">
+                  <div class="d-flex align-items-center mb-3">
+                    <div class="flex-shrink-0">
+                      <div
+                        class="avatar bg-success-subtle text-success rounded"
+                      >
+                        <i class="fas fa-file-alt"></i>
+                      </div>
+                    </div>
+                    <div class="flex-grow-1 ms-3">
+                      <h6 class="mb-0">Pengajuan Total</h6>
+                      <h3 class="fw-bold mb-0">250</h3>
+                    </div>
+                  </div>
+                  <div class="progress" style="height: 6px">
+                    <div
+                      class="progress-bar bg-success"
+                      role="progressbar"
+                      style="width: 65%"
+                    ></div>
+                  </div>
+                  <div class="d-flex align-items-center mt-3">
+                    <span class="text-success me-2"
+                      ><i class="fas fa-arrow-up"></i> 18%</span
+                    >
+                    <span class="text-muted small">dari bulan lalu</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-md-3">
+              <div
+                class="card border-0 shadow-sm h-100 animation-fade-in-up"
+                style="--delay: 0.3s"
+              >
+                <div class="card-body">
+                  <div class="d-flex align-items-center mb-3">
+                    <div class="flex-shrink-0">
+                      <div
+                        class="avatar bg-warning-subtle text-warning rounded"
+                      >
+                        <i class="fas fa-clock"></i>
+                      </div>
+                    </div>
+                    <div class="flex-grow-1 ms-3">
+                      <h6 class="mb-0">Menunggu Verifikasi</h6>
+                      <h3 class="fw-bold mb-0">42</h3>
+                    </div>
+                  </div>
+                  <div class="progress" style="height: 6px">
+                    <div
+                      class="progress-bar bg-warning"
+                      role="progressbar"
+                      style="width: 45%"
+                    ></div>
+                  </div>
+                  <div class="d-flex align-items-center mt-3">
+                    <span class="text-danger me-2"
+                      ><i class="fas fa-arrow-up"></i> 8%</span
+                    >
+                    <span class="text-muted small">dari minggu lalu</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-md-3">
+              <div
+                class="card border-0 shadow-sm h-100 animation-fade-in-up"
+                style="--delay: 0.4s"
+              >
+                <div class="card-body">
+                  <div class="d-flex align-items-center mb-3">
+                    <div class="flex-shrink-0">
+                      <div class="avatar bg-info-subtle text-info rounded">
+                        <i class="fas fa-check-circle"></i>
+                      </div>
+                    </div>
+                    <div class="flex-grow-1 ms-3">
+                      <h6 class="mb-0">Disetujui</h6>
+                      <h3 class="fw-bold mb-0">185</h3>
+                    </div>
+                  </div>
+                  <div class="progress" style="height: 6px">
+                    <div
+                      class="progress-bar bg-info"
+                      role="progressbar"
+                      style="width: 80%"
+                    ></div>
+                  </div>
+                  <div class="d-flex align-items-center mt-3">
+                    <span class="text-success me-2"
+                      ><i class="fas fa-arrow-up"></i> 15%</span
+                    >
+                    <span class="text-muted small">dari bulan lalu</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Pending Applications and Activity Log -->
+          <div class="row g-4">
+            <div class="col-lg-8">
+              <div
+                class="card border-0 shadow-sm animation-fade-in-up"
+                style="--delay: 0.7s"
+              >
+                <div class="card-header bg-white border-0 py-3">
+                  <div
+                    class="d-flex justify-content-between align-items-center"
+                  >
+                    <h5 class="mb-0">Pengajuan Menunggu Verifikasi</h5>
+                    <a
+                      href="pengajuan.html"
+                      class="btn btn-sm btn-outline-primary"
+                      >Lihat Semua</a
+                    >
+                  </div>
+                </div>
+                <div class="card-body p-0">
+                  <div class="table-responsive">
+                    <table class="table table-hover align-middle">
+                      <thead class="table-light">
+                        <tr>
+                          <th scope="col">ID</th>
+                          <th scope="col">Kelompok Tani</th>
+                          <th scope="col">Jenis Bantuan</th>
+                          <th scope="col">Tanggal</th>
+                          <th scope="col">Status</th>
+                          <th scope="col">Aksi</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td>#BT-2025-052</td>
+                          <td>Kelompok Tani Makmur</td>
+                          <td>Bibit Padi</td>
+                          <td>22 Mei 2025</td>
+                          <td>
+                            <span class="badge bg-warning text-dark"
+                              >Menunggu</span
+                            >
+                          </td>
+                          <td>
+                            <div class="btn-group">
+                              <button
+                                type="button"
+                                class="btn btn-sm btn-outline-primary"
+                              >
+                                Verifikasi
+                              </button>
+                              <button
+                                type="button"
+                                class="btn btn-sm btn-outline-primary dropdown-toggle dropdown-toggle-split"
+                                data-bs-toggle="dropdown"
+                                aria-expanded="false"
+                              >
+                                <span class="visually-hidden"
+                                  >Toggle Dropdown</span
+                                >
+                              </button>
+                              <ul class="dropdown-menu dropdown-menu-end">
+                                <li>
+                                  <a class="dropdown-item" href="#">Detail</a>
+                                </li>
+                                <li>
+                                  <a class="dropdown-item" href="#">Tolak</a>
+                                </li>
+                                <li><hr class="dropdown-divider" /></li>
+                                <li>
+                                  <a class="dropdown-item text-danger" href="#"
+                                    >Hapus</a
+                                  >
+                                </li>
+                              </ul>
+                            </div>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td>#BT-2025-051</td>
+                          <td>Kelompok Tani Sejahtera</td>
+                          <td>Pupuk Subsidi</td>
+                          <td>21 Mei 2025</td>
+                          <td>
+                            <span class="badge bg-warning text-dark"
+                              >Menunggu</span
+                            >
+                          </td>
+                          <td>
+                            <div class="btn-group">
+                              <button
+                                type="button"
+                                class="btn btn-sm btn-outline-primary"
+                              >
+                                Verifikasi
+                              </button>
+                              <button
+                                type="button"
+                                class="btn btn-sm btn-outline-primary dropdown-toggle dropdown-toggle-split"
+                                data-bs-toggle="dropdown"
+                                aria-expanded="false"
+                              >
+                                <span class="visually-hidden"
+                                  >Toggle Dropdown</span
+                                >
+                              </button>
+                              <ul class="dropdown-menu dropdown-menu-end">
+                                <li>
+                                  <a class="dropdown-item" href="#">Detail</a>
+                                </li>
+                                <li>
+                                  <a class="dropdown-item" href="#">Tolak</a>
+                                </li>
+                                <li><hr class="dropdown-divider" /></li>
+                                <li>
+                                  <a class="dropdown-item text-danger" href="#"
+                                    >Hapus</a
+                                  >
+                                </li>
+                              </ul>
+                            </div>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td>#BT-2025-050</td>
+                          <td>Kelompok Tani Maju</td>
+                          <td>Bibit Jagung</td>
+                          <td>20 Mei 2025</td>
+                          <td>
+                            <span class="badge bg-warning text-dark"
+                              >Menunggu</span
+                            >
+                          </td>
+                          <td>
+                            <div class="btn-group">
+                              <button
+                                type="button"
+                                class="btn btn-sm btn-outline-primary"
+                              >
+                                Verifikasi
+                              </button>
+                              <button
+                                type="button"
+                                class="btn btn-sm btn-outline-primary dropdown-toggle dropdown-toggle-split"
+                                data-bs-toggle="dropdown"
+                                aria-expanded="false"
+                              >
+                                <span class="visually-hidden"
+                                  >Toggle Dropdown</span
+                                >
+                              </button>
+                              <ul class="dropdown-menu dropdown-menu-end">
+                                <li>
+                                  <a class="dropdown-item" href="#">Detail</a>
+                                </li>
+                                <li>
+                                  <a class="dropdown-item" href="#">Tolak</a>
+                                </li>
+                                <li><hr class="dropdown-divider" /></li>
+                                <li>
+                                  <a class="dropdown-item text-danger" href="#"
+                                    >Hapus</a
+                                  >
+                                </li>
+                              </ul>
+                            </div>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td>#BT-2025-049</td>
+                          <td>Kelompok Tani Bahagia</td>
+                          <td>Pestisida</td>
+                          <td>19 Mei 2025</td>
+                          <td>
+                            <span class="badge bg-warning text-dark"
+                              >Menunggu</span
+                            >
+                          </td>
+                          <td>
+                            <div class="btn-group">
+                              <button
+                                type="button"
+                                class="btn btn-sm btn-outline-primary"
+                              >
+                                Verifikasi
+                              </button>
+                              <button
+                                type="button"
+                                class="btn btn-sm btn-outline-primary dropdown-toggle dropdown-toggle-split"
+                                data-bs-toggle="dropdown"
+                                aria-expanded="false"
+                              >
+                                <span class="visually-hidden"
+                                  >Toggle Dropdown</span
+                                >
+                              </button>
+                              <ul class="dropdown-menu dropdown-menu-end">
+                                <li>
+                                  <a class="dropdown-item" href="#">Detail</a>
+                                </li>
+                                <li>
+                                  <a class="dropdown-item" href="#">Tolak</a>
+                                </li>
+                                <li><hr class="dropdown-divider" /></li>
+                                <li>
+                                  <a class="dropdown-item text-danger" href="#"
+                                    >Hapus</a
+                                  >
+                                </li>
+                              </ul>
+                            </div>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td>#BT-2025-048</td>
+                          <td>Kelompok Tani Subur</td>
+                          <td>Alat Pertanian</td>
+                          <td>18 Mei 2025</td>
+                          <td>
+                            <span class="badge bg-warning text-dark"
+                              >Menunggu</span
+                            >
+                          </td>
+                          <td>
+                            <div class="btn-group">
+                              <button
+                                type="button"
+                                class="btn btn-sm btn-outline-primary"
+                              >
+                                Verifikasi
+                              </button>
+                              <button
+                                type="button"
+                                class="btn btn-sm btn-outline-primary dropdown-toggle dropdown-toggle-split"
+                                data-bs-toggle="dropdown"
+                                aria-expanded="false"
+                              >
+                                <span class="visually-hidden"
+                                  >Toggle Dropdown</span
+                                >
+                              </button>
+                              <ul class="dropdown-menu dropdown-menu-end">
+                                <li>
+                                  <a class="dropdown-item" href="#">Detail</a>
+                                </li>
+                                <li>
+                                  <a class="dropdown-item" href="#">Tolak</a>
+                                </li>
+                                <li><hr class="dropdown-divider" /></li>
+                                <li>
+                                  <a class="dropdown-item text-danger" href="#"
+                                    >Hapus</a
+                                  >
+                                </li>
+                              </ul>
+                            </div>
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-lg-4">
+              <div
+                class="card border-0 shadow-sm animation-fade-in-up"
+                style="--delay: 0.8s"
+              >
+                <div class="card-header bg-white border-0 py-3">
+                  <h5 class="mb-0">Aktivitas Terbaru</h5>
+                </div>
+                <div class="card-body p-0">
+                  <div class="activity-feed p-3">
+                    <div class="activity-item d-flex mb-3 pb-3 border-bottom">
+                      <div
+                        class="activity-icon bg-success-subtle text-success rounded-circle me-3"
+                      >
+                        <i class="fas fa-check"></i>
+                      </div>
+                      <div>
+                        <p class="mb-1"><strong>Pengajuan Disetujui</strong></p>
+                        <p class="text-muted mb-1 small">
+                          Anda telah menyetujui pengajuan bantuan dari Kelompok
+                          Tani Makmur
+                        </p>
+                        <p class="text-muted mb-0 small">10 menit yang lalu</p>
+                      </div>
+                    </div>
+                    <div class="activity-item d-flex mb-3 pb-3 border-bottom">
+                      <div
+                        class="activity-icon bg-primary-subtle text-primary rounded-circle me-3"
+                      >
+                        <i class="fas fa-user-plus"></i>
+                      </div>
+                      <div>
+                        <p class="mb-1"><strong>Kelompok Tani Baru</strong></p>
+                        <p class="text-muted mb-1 small">
+                          Kelompok Tani Maju telah mendaftar ke sistem
+                        </p>
+                        <p class="text-muted mb-0 small">45 menit yang lalu</p>
+                      </div>
+                    </div>
+                    <div class="activity-item d-flex mb-3 pb-3 border-bottom">
+                      <div
+                        class="activity-icon bg-warning-subtle text-warning rounded-circle me-3"
+                      >
+                        <i class="fas fa-file-alt"></i>
+                      </div>
+                      <div>
+                        <p class="mb-1"><strong>Pengajuan Baru</strong></p>
+                        <p class="text-muted mb-1 small">
+                          Kelompok Tani Sejahtera mengajukan bantuan bibit padi
+                        </p>
+                        <p class="text-muted mb-0 small">1 jam yang lalu</p>
+                      </div>
+                    </div>
+                    <div class="activity-item d-flex mb-3 pb-3 border-bottom">
+                      <div
+                        class="activity-icon bg-danger-subtle text-danger rounded-circle me-3"
+                      >
+                        <i class="fas fa-times"></i>
+                      </div>
+                      <div>
+                        <p class="mb-1"><strong>Pengajuan Ditolak</strong></p>
+                        <p class="text-muted mb-1 small">
+                          Anda menolak pengajuan bantuan dari Kelompok Tani
+                          Bahagia
+                        </p>
+                        <p class="text-muted mb-0 small">2 jam yang lalu</p>
+                      </div>
+                    </div>
+                    <div class="activity-item d-flex">
+                      <div
+                        class="activity-icon bg-info-subtle text-info rounded-circle me-3"
+                      >
+                        <i class="fas fa-sync-alt"></i>
+                      </div>
+                      <div>
+                        <p class="mb-1"><strong>Status Diperbarui</strong></p>
+                        <p class="text-muted mb-1 small">
+                          Kepala Dinas telah menyetujui 5 pengajuan bantuan
+                        </p>
+                        <p class="text-muted mb-0 small">3 jam yang lalu</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="card-footer bg-white py-3 text-center">
+                  <a href="#" class="btn btn-sm btn-outline-secondary"
+                    >Lihat Semua Aktivitas</a
+                  >
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Footer -->
+        <footer class="bg-white border-top py-3 px-4 mt-4">
+          <div class="container-fluid">
+            <div class="row">
+              <div class="col-md-6">
+                <p class="mb-md-0 text-muted">
+                  © 2025 Dinas Pertanian Kabupaten Bulukumba
+                </p>
+              </div>
+              <div class="col-md-6 text-md-end">
+                <a href="#" class="text-decoration-none text-muted me-3"
+                  >Bantuan</a
+                >
+                <a href="#" class="text-decoration-none text-muted me-3"
+                  >Kebijakan Privasi</a
+                >
+                <a href="#" class="text-decoration-none text-muted"
+                  >Syarat & Ketentuan</a
+                >
+              </div>
+            </div>
+          </div>
+        </footer>
+      </div>
+    </div>
+
+    <!-- Bootstrap Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.0.0/dist/chart.umd.min.js"></script>
+    <!-- Custom JS -->
+    <script src="../assets/js/main.js"></script>
+    <script src="../assets/js/admin-dashboard.js"></script>
+  </body>
+</html>

@@ -1,0 +1,918 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Kelompok Tani - CPCL Dinas Pertanian</title>
+    <!-- Bootstrap CSS -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <!-- Font Awesome -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <!-- Google Fonts -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="../assets/css/style.css" />
+    <link rel="stylesheet" href="../assets/css/dashboard.css" />
+  </head>
+  <body>
+    <div class="d-flex" id="wrapper">
+      <!-- Sidebar -->
+      <div class="bg-white border-end" id="sidebar-wrapper">
+        <div class="sidebar-heading text-center py-4 border-bottom">
+          <img
+            src="../assets/img/logo.svg"
+            alt="Logo"
+            height="50"
+            class="mb-2"
+          />
+          <div class="fs-5 fw-semibold">CPCL Pertanian</div>
+          <div class="small text-muted">Admin</div>
+        </div>
+        <div class="list-group list-group-flush sidebar-nav">
+          <a
+            href="dashboard.html"
+            class="list-group-item list-group-item-action py-3"
+          >
+            <i class="fas fa-tachometer-alt me-2"></i> Dashboard
+          </a>
+          <a
+            href="pengajuan.html"
+            class="list-group-item list-group-item-action py-3"
+          >
+            <i class="fas fa-file-alt me-2"></i> Pengajuan Bantuan
+          </a>
+          <a
+            href="kelompok-tani.html"
+            class="list-group-item list-group-item-action active py-3"
+          >
+            <i class="fas fa-users me-2"></i> Kelompok Tani
+          </a>
+          <a
+            href="laporan.html"
+            class="list-group-item list-group-item-action py-3"
+          >
+            <i class="fas fa-chart-bar me-2"></i> Laporan
+          </a>
+          <a
+            href="pengaturan.html"
+            class="list-group-item list-group-item-action py-3"
+          >
+            <i class="fas fa-cog me-2"></i> Pengaturan
+          </a>
+        </div>
+        <div class="mt-auto border-top p-3">
+          <a href="../login.html" class="btn btn-outline-danger d-block">
+            <i class="fas fa-sign-out-alt me-2"></i> Keluar
+          </a>
+        </div>
+      </div>
+
+      <!-- Page Content -->
+      <div id="page-content-wrapper">
+        <!-- Top navigation -->
+        <nav
+          class="navbar navbar-expand-lg navbar-light bg-white border-bottom py-3"
+        >
+          <div class="container-fluid">
+            <button class="btn" id="sidebarToggle">
+              <i class="fas fa-bars"></i>
+            </button>
+            <div class="d-none d-md-block ms-2">
+              <h5 class="mb-0">Kelola Kelompok Tani</h5>
+            </div>
+            <div class="ms-auto d-flex align-items-center">
+              <div class="dropdown me-3">
+                <a
+                  class="nav-link dropdown-toggle"
+                  href="#"
+                  role="button"
+                  id="notificationDropdown"
+                  data-bs-toggle="dropdown"
+                  aria-expanded="false"
+                >
+                  <i class="fas fa-bell position-relative">
+                    <span
+                      class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger"
+                      >5</span
+                    >
+                  </i>
+                </a>
+                <ul
+                  class="dropdown-menu dropdown-menu-end shadow-sm"
+                  aria-labelledby="notificationDropdown"
+                >
+                  <li><h6 class="dropdown-header">Notifikasi</h6></li>
+                  <li><hr class="dropdown-divider" /></li>
+                  <li>
+                    <a class="dropdown-item" href="#"
+                      >Pendaftaran kelompok tani baru</a
+                    >
+                  </li>
+                  <li>
+                    <a class="dropdown-item" href="#">Pengajuan bantuan baru</a>
+                  </li>
+                  <li>
+                    <a class="dropdown-item" href="#">Update profil kelompok</a>
+                  </li>
+                  <li>
+                    <a class="dropdown-item" href="#"
+                      >Verifikasi data pending</a
+                    >
+                  </li>
+                  <li>
+                    <a class="dropdown-item" href="#"
+                      >Persetujuan kepala dinas</a
+                    >
+                  </li>
+                </ul>
+              </div>
+
+              <div
+                class="avatar-sm bg-primary rounded-circle text-white me-2 d-flex align-items-center justify-content-center"
+              >
+                AD
+              </div>
+              <span class="d-none d-md-block">Admin Dinas</span>
+            </div>
+          </div>
+        </nav>
+
+        <!-- Main content -->
+        <div class="container-fluid p-4">
+          <!-- Search and Filter -->
+          <div class="row mb-4">
+            <div class="col-12">
+              <div class="card border-0 shadow-sm">
+                <div class="card-body">
+                  <div class="row g-3">
+                    <div class="col-md-4">
+                      <div class="input-group">
+                        <span class="input-group-text"
+                          ><i class="fas fa-search"></i
+                        ></span>
+                        <input
+                          type="text"
+                          class="form-control"
+                          placeholder="Cari kelompok tani..."
+                        />
+                      </div>
+                    </div>
+                    <div class="col-md-3">
+                      <select class="form-select">
+                        <option value="">Semua Kecamatan</option>
+                        <option>Ujung Bulu</option>
+                        <option>Gantarang</option>
+                        <option>Ujung Loe</option>
+                        <option>Bontobahari</option>
+                        <option>Bontotiro</option>
+                      </select>
+                    </div>
+                    <div class="col-md-3">
+                      <select class="form-select">
+                        <option value="">Semua Status</option>
+                        <option>Aktif</option>
+                        <option>Nonaktif</option>
+                        <option>Menunggu Verifikasi</option>
+                      </select>
+                    </div>
+                    <div class="col-md-2">
+                      <button
+                        class="btn btn-primary w-100"
+                        data-bs-toggle="modal"
+                        data-bs-target="#addKelompokModal"
+                      >
+                        <i class="fas fa-plus me-2"></i> Tambah
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Kelompok Tani Table -->
+          <div class="row">
+            <div class="col-12">
+              <div class="card border-0 shadow-sm">
+                <div class="card-body p-0">
+                  <div class="table-responsive">
+                    <table class="table table-hover align-middle">
+                      <thead class="table-light">
+                        <tr>
+                          <th scope="col">ID</th>
+                          <th scope="col">Nama Kelompok</th>
+                          <th scope="col">Ketua</th>
+                          <th scope="col">Lokasi</th>
+                          <th scope="col">Anggota</th>
+                          <th scope="col">Status</th>
+                          <th scope="col">Aksi</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td>KT-2025-001</td>
+                          <td>
+                            <div class="d-flex align-items-center">
+                              <img
+                                src="../assets/img/placeholder-kelompok.jpg"
+                                alt="Kelompok"
+                                class="rounded-circle me-2"
+                                width="40"
+                                height="40"
+                              />
+                              <div>
+                                <div class="fw-bold">Kelompok Tani Makmur</div>
+                                <div class="small text-muted">
+                                  Bergabung: 2020
+                                </div>
+                              </div>
+                            </div>
+                          </td>
+                          <td>Budi Santoso</td>
+                          <td>Desa Makmur, Gantarang</td>
+                          <td>25</td>
+                          <td><span class="badge bg-success">Aktif</span></td>
+                          <td>
+                            <div class="btn-group">
+                              <button
+                                type="button"
+                                class="btn btn-sm btn-outline-primary"
+                                data-bs-toggle="modal"
+                                data-bs-target="#detailModal"
+                              >
+                                <i class="fas fa-eye"></i>
+                              </button>
+                              <button
+                                type="button"
+                                class="btn btn-sm btn-outline-success"
+                                data-bs-toggle="modal"
+                                data-bs-target="#editModal"
+                              >
+                                <i class="fas fa-edit"></i>
+                              </button>
+                              <button
+                                type="button"
+                                class="btn btn-sm btn-outline-danger"
+                                data-bs-toggle="modal"
+                                data-bs-target="#deleteModal"
+                              >
+                                <i class="fas fa-trash"></i>
+                              </button>
+                            </div>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td>KT-2025-002</td>
+                          <td>
+                            <div class="d-flex align-items-center">
+                              <img
+                                src="../assets/img/placeholder-kelompok.jpg"
+                                alt="Kelompok"
+                                class="rounded-circle me-2"
+                                width="40"
+                                height="40"
+                              />
+                              <div>
+                                <div class="fw-bold">
+                                  Kelompok Tani Sejahtera
+                                </div>
+                                <div class="small text-muted">
+                                  Bergabung: 2021
+                                </div>
+                              </div>
+                            </div>
+                          </td>
+                          <td>Ahmad Yani</td>
+                          <td>Desa Sejahtera, Ujung Loe</td>
+                          <td>30</td>
+                          <td><span class="badge bg-success">Aktif</span></td>
+                          <td>
+                            <div class="btn-group">
+                              <button
+                                type="button"
+                                class="btn btn-sm btn-outline-primary"
+                                data-bs-toggle="modal"
+                                data-bs-target="#detailModal"
+                              >
+                                <i class="fas fa-eye"></i>
+                              </button>
+                              <button
+                                type="button"
+                                class="btn btn-sm btn-outline-success"
+                                data-bs-toggle="modal"
+                                data-bs-target="#editModal"
+                              >
+                                <i class="fas fa-edit"></i>
+                              </button>
+                              <button
+                                type="button"
+                                class="btn btn-sm btn-outline-danger"
+                                data-bs-toggle="modal"
+                                data-bs-target="#deleteModal"
+                              >
+                                <i class="fas fa-trash"></i>
+                              </button>
+                            </div>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td>KT-2025-003</td>
+                          <td>
+                            <div class="d-flex align-items-center">
+                              <img
+                                src="../assets/img/placeholder-kelompok.jpg"
+                                alt="Kelompok"
+                                class="rounded-circle me-2"
+                                width="40"
+                                height="40"
+                              />
+                              <div>
+                                <div class="fw-bold">Kelompok Tani Maju</div>
+                                <div class="small text-muted">
+                                  Bergabung: 2022
+                                </div>
+                              </div>
+                            </div>
+                          </td>
+                          <td>Siti Aminah</td>
+                          <td>Desa Maju, Bontobahari</td>
+                          <td>20</td>
+                          <td>
+                            <span class="badge bg-warning text-dark"
+                              >Verifikasi</span
+                            >
+                          </td>
+                          <td>
+                            <div class="btn-group">
+                              <button
+                                type="button"
+                                class="btn btn-sm btn-outline-primary"
+                                data-bs-toggle="modal"
+                                data-bs-target="#detailModal"
+                              >
+                                <i class="fas fa-eye"></i>
+                              </button>
+                              <button
+                                type="button"
+                                class="btn btn-sm btn-outline-success"
+                                data-bs-toggle="modal"
+                                data-bs-target="#editModal"
+                              >
+                                <i class="fas fa-edit"></i>
+                              </button>
+                              <button
+                                type="button"
+                                class="btn btn-sm btn-outline-danger"
+                                data-bs-toggle="modal"
+                                data-bs-target="#deleteModal"
+                              >
+                                <i class="fas fa-trash"></i>
+                              </button>
+                            </div>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td>KT-2025-004</td>
+                          <td>
+                            <div class="d-flex align-items-center">
+                              <img
+                                src="../assets/img/placeholder-kelompok.jpg"
+                                alt="Kelompok"
+                                class="rounded-circle me-2"
+                                width="40"
+                                height="40"
+                              />
+                              <div>
+                                <div class="fw-bold">Kelompok Tani Bahagia</div>
+                                <div class="small text-muted">
+                                  Bergabung: 2023
+                                </div>
+                              </div>
+                            </div>
+                          </td>
+                          <td>Rudi Hartono</td>
+                          <td>Desa Bahagia, Bontotiro</td>
+                          <td>15</td>
+                          <td><span class="badge bg-danger">Nonaktif</span></td>
+                          <td>
+                            <div class="btn-group">
+                              <button
+                                type="button"
+                                class="btn btn-sm btn-outline-primary"
+                                data-bs-toggle="modal"
+                                data-bs-target="#detailModal"
+                              >
+                                <i class="fas fa-eye"></i>
+                              </button>
+                              <button
+                                type="button"
+                                class="btn btn-sm btn-outline-success"
+                                data-bs-toggle="modal"
+                                data-bs-target="#editModal"
+                              >
+                                <i class="fas fa-edit"></i>
+                              </button>
+                              <button
+                                type="button"
+                                class="btn btn-sm btn-outline-danger"
+                                data-bs-toggle="modal"
+                                data-bs-target="#deleteModal"
+                              >
+                                <i class="fas fa-trash"></i>
+                              </button>
+                            </div>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td>KT-2025-005</td>
+                          <td>
+                            <div class="d-flex align-items-center">
+                              <img
+                                src="../assets/img/placeholder-kelompok.jpg"
+                                alt="Kelompok"
+                                class="rounded-circle me-2"
+                                width="40"
+                                height="40"
+                              />
+                              <div>
+                                <div class="fw-bold">Kelompok Tani Subur</div>
+                                <div class="small text-muted">
+                                  Bergabung: 2024
+                                </div>
+                              </div>
+                            </div>
+                          </td>
+                          <td>Joko Widodo</td>
+                          <td>Desa Subur, Gantarang</td>
+                          <td>35</td>
+                          <td><span class="badge bg-success">Aktif</span></td>
+                          <td>
+                            <div class="btn-group">
+                              <button
+                                type="button"
+                                class="btn btn-sm btn-outline-primary"
+                                data-bs-toggle="modal"
+                                data-bs-target="#detailModal"
+                              >
+                                <i class="fas fa-eye"></i>
+                              </button>
+                              <button
+                                type="button"
+                                class="btn btn-sm btn-outline-success"
+                                data-bs-toggle="modal"
+                                data-bs-target="#editModal"
+                              >
+                                <i class="fas fa-edit"></i>
+                              </button>
+                              <button
+                                type="button"
+                                class="btn btn-sm btn-outline-danger"
+                                data-bs-toggle="modal"
+                                data-bs-target="#deleteModal"
+                              >
+                                <i class="fas fa-trash"></i>
+                              </button>
+                            </div>
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+                <div class="card-footer bg-white py-3">
+                  <nav aria-label="Page navigation">
+                    <ul class="pagination justify-content-center mb-0">
+                      <li class="page-item disabled">
+                        <a class="page-link" href="#" tabindex="-1">Previous</a>
+                      </li>
+                      <li class="page-item active">
+                        <a class="page-link" href="#">1</a>
+                      </li>
+                      <li class="page-item">
+                        <a class="page-link" href="#">2</a>
+                      </li>
+                      <li class="page-item">
+                        <a class="page-link" href="#">3</a>
+                      </li>
+                      <li class="page-item">
+                        <a class="page-link" href="#">Next</a>
+                      </li>
+                    </ul>
+                  </nav>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Add Kelompok Modal -->
+        <div class="modal fade" id="addKelompokModal" tabindex="-1">
+          <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title">Tambah Kelompok Tani</h5>
+                <button
+                  type="button"
+                  class="btn-close"
+                  data-bs-dismiss="modal"
+                ></button>
+              </div>
+              <div class="modal-body">
+                <form class="needs-validation" novalidate>
+                  <div class="row g-3">
+                    <div class="col-md-6">
+                      <label class="form-label">Nama Kelompok</label>
+                      <input type="text" class="form-control" required />
+                    </div>
+                    <div class="col-md-6">
+                      <label class="form-label">Nomor Registrasi</label>
+                      <input type="text" class="form-control" required />
+                    </div>
+                    <div class="col-md-6">
+                      <label class="form-label">Nama Ketua</label>
+                      <input type="text" class="form-control" required />
+                    </div>
+                    <div class="col-md-6">
+                      <label class="form-label">NIK Ketua</label>
+                      <input type="text" class="form-control" required />
+                    </div>
+                    <div class="col-md-6">
+                      <label class="form-label">Nomor HP</label>
+                      <input type="tel" class="form-control" required />
+                    </div>
+                    <div class="col-md-6">
+                      <label class="form-label">Email</label>
+                      <input type="email" class="form-control" />
+                    </div>
+                    <div class="col-12">
+                      <label class="form-label">Alamat</label>
+                      <textarea
+                        class="form-control"
+                        rows="3"
+                        required
+                      ></textarea>
+                    </div>
+                    <div class="col-md-6">
+                      <label class="form-label">Desa/Kelurahan</label>
+                      <input type="text" class="form-control" required />
+                    </div>
+                    <div class="col-md-6">
+                      <label class="form-label">Kecamatan</label>
+                      <select class="form-select" required>
+                        <option value="">Pilih Kecamatan</option>
+                        <option>Ujung Bulu</option>
+                        <option>Gantarang</option>
+                        <option>Ujung Loe</option>
+                        <option>Bontobahari</option>
+                        <option>Bontotiro</option>
+                      </select>
+                    </div>
+                    <div class="col-md-6">
+                      <label class="form-label">Jumlah Anggota</label>
+                      <input type="number" class="form-control" required />
+                    </div>
+                    <div class="col-md-6">
+                      <label class="form-label">Status</label>
+                      <select class="form-select" required>
+                        <option value="">Pilih Status</option>
+                        <option>Aktif</option>
+                        <option>Nonaktif</option>
+                        <option>Menunggu Verifikasi</option>
+                      </select>
+                    </div>
+                  </div>
+                </form>
+              </div>
+              <div class="modal-footer">
+                <button
+                  type="button"
+                  class="btn btn-secondary"
+                  data-bs-dismiss="modal"
+                >
+                  Batal
+                </button>
+                <button type="button" class="btn btn-primary">Simpan</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Detail Modal -->
+        <div class="modal fade" id="detailModal" tabindex="-1">
+          <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title">Detail Kelompok Tani</h5>
+                <button
+                  type="button"
+                  class="btn-close"
+                  data-bs-dismiss="modal"
+                ></button>
+              </div>
+              <div class="modal-body">
+                <div class="row">
+                  <div class="col-md-4 text-center mb-4">
+                    <img
+                      src="../assets/img/placeholder-kelompok.jpg"
+                      alt="Foto Kelompok"
+                      class="img-fluid rounded-circle mb-3"
+                      style="width: 150px; height: 150px; object-fit: cover"
+                    />
+                    <h5 class="fw-bold mb-1">Kelompok Tani Makmur</h5>
+                    <p class="text-muted">KT-2025-001</p>
+                    <span class="badge bg-success">Aktif</span>
+                  </div>
+                  <div class="col-md-8">
+                    <h6 class="border-start border-4 border-primary ps-3 mb-4">
+                      Informasi Umum
+                    </h6>
+                    <div class="row g-3">
+                      <div class="col-md-6">
+                        <p class="mb-1"><strong>Ketua:</strong></p>
+                        <p>Budi Santoso</p>
+                      </div>
+                      <div class="col-md-6">
+                        <p class="mb-1"><strong>NIK Ketua:</strong></p>
+                        <p>7371XXXXXXXXXXXXXX</p>
+                      </div>
+                      <div class="col-md-6">
+                        <p class="mb-1"><strong>Nomor HP:</strong></p>
+                        <p>081234567890</p>
+                      </div>
+                      <div class="col-md-6">
+                        <p class="mb-1"><strong>Email:</strong></p>
+                        <p>budi@example.com</p>
+                      </div>
+                      <div class="col-12">
+                        <p class="mb-1"><strong>Alamat:</strong></p>
+                        <p>Desa Makmur, Kec. Gantarang</p>
+                      </div>
+                      <div class="col-md-6">
+                        <p class="mb-1"><strong>Jumlah Anggota:</strong></p>
+                        <p>25 Orang</p>
+                      </div>
+                      <div class="col-md-6">
+                        <p class="mb-1"><strong>Tahun Bergabung:</strong></p>
+                        <p>2020</p>
+                      </div>
+                    </div>
+
+                    <h6
+                      class="border-start border-4 border-primary ps-3 mb-4 mt-4"
+                    >
+                      Statistik
+                    </h6>
+                    <div class="row g-3">
+                      <div class="col-md-4">
+                        <div class="card border-0 bg-light">
+                          <div class="card-body text-center">
+                            <h3 class="fw-bold text-primary mb-1">15</h3>
+                            <p class="small text-muted mb-0">Total Pengajuan</p>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-md-4">
+                        <div class="card border-0 bg-light">
+                          <div class="card-body text-center">
+                            <h3 class="fw-bold text-success mb-1">12</h3>
+                            <p class="small text-muted mb-0">Disetujui</p>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-md-4">
+                        <div class="card border-0 bg-light">
+                          <div class="card-body text-center">
+                            <h3 class="fw-bold text-warning mb-1">3</h3>
+                            <p class="small text-muted mb-0">Dalam Proses</p>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="modal-footer">
+                <button
+                  type="button"
+                  class="btn btn-secondary"
+                  data-bs-dismiss="modal"
+                >
+                  Tutup
+                </button>
+                <button
+                  type="button"
+                  class="btn btn-success"
+                  data-bs-toggle="modal"
+                  data-bs-target="#editModal"
+                >
+                  <i class="fas fa-edit me-2"></i> Edit
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Edit Modal -->
+        <div class="modal fade" id="editModal" tabindex="-1">
+          <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title">Edit Kelompok Tani</h5>
+                <button
+                  type="button"
+                  class="btn-close"
+                  data-bs-dismiss="modal"
+                ></button>
+              </div>
+              <div class="modal-body">
+                <form class="needs-validation" novalidate>
+                  <div class="row g-3">
+                    <div class="col-md-6">
+                      <label class="form-label">Nama Kelompok</label>
+                      <input
+                        type="text"
+                        class="form-control"
+                        value="Kelompok Tani Makmur"
+                        required
+                      />
+                    </div>
+                    <div class="col-md-6">
+                      <label class="form-label">Nomor Registrasi</label>
+                      <input
+                        type="text"
+                        class="form-control"
+                        value="KT-2025-001"
+                        readonly
+                      />
+                    </div>
+                    <div class="col-md-6">
+                      <label class="form-label">Nama Ketua</label>
+                      <input
+                        type="text"
+                        class="form-control"
+                        value="Budi Santoso"
+                        required
+                      />
+                    </div>
+                    <div class="col-md-6">
+                      <label class="form-label">NIK Ketua</label>
+                      <input
+                        type="text"
+                        class="form-control"
+                        value="7371XXXXXXXXXXXXXX"
+                        required
+                      />
+                    </div>
+                    <div class="col-md-6">
+                      <label class="form-label">Nomor HP</label>
+                      <input
+                        type="tel"
+                        class="form-control"
+                        value="081234567890"
+                        required
+                      />
+                    </div>
+                    <div class="col-md-6">
+                      <label class="form-label">Email</label>
+                      <input
+                        type="email"
+                        class="form-control"
+                        value="budi@example.com"
+                      />
+                    </div>
+                    <div class="col-12">
+                      <label class="form-label">Alamat</label>
+                      <textarea class="form-control" rows="3" required>
+Desa Makmur, Kec. Gantarang</textarea
+                      >
+                    </div>
+                    <div class="col-md-6">
+                      <label class="form-label">Desa/Kelurahan</label>
+                      <input
+                        type="text"
+                        class="form-control"
+                        value="Desa Makmur"
+                        required
+                      />
+                    </div>
+                    <div class="col-md-6">
+                      <label class="form-label">Kecamatan</label>
+                      <select class="form-select" required>
+                        <option>Gantarang</option>
+                        <option>Ujung Bulu</option>
+                        <option>Ujung Loe</option>
+                        <option>Bontobahari</option>
+                        <option>Bontotiro</option>
+                      </select>
+                    </div>
+                    <div class="col-md-6">
+                      <label class="form-label">Jumlah Anggota</label>
+                      <input
+                        type="number"
+                        class="form-control"
+                        value="25"
+                        required
+                      />
+                    </div>
+                    <div class="col-md-6">
+                      <label class="form-label">Status</label>
+                      <select class="form-select" required>
+                        <option selected>Aktif</option>
+                        <option>Nonaktif</option>
+                        <option>Menunggu Verifikasi</option>
+                      </select>
+                    </div>
+                  </div>
+                </form>
+              </div>
+              <div class="modal-footer">
+                <button
+                  type="button"
+                  class="btn btn-secondary"
+                  data-bs-dismiss="modal"
+                >
+                  Batal
+                </button>
+                <button type="button" class="btn btn-primary">
+                  Simpan Perubahan
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Delete Modal -->
+        <div class="modal fade" id="deleteModal" tabindex="-1">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title">Hapus Kelompok Tani</h5>
+                <button
+                  type="button"
+                  class="btn-close"
+                  data-bs-dismiss="modal"
+                ></button>
+              </div>
+              <div class="modal-body">
+                <p>Apakah Anda yakin ingin menghapus Kelompok Tani Makmur?</p>
+                <p class="text-danger">
+                  <strong>Perhatian:</strong> Tindakan ini tidak dapat
+                  dibatalkan dan akan menghapus semua data terkait kelompok tani
+                  ini.
+                </p>
+              </div>
+              <div class="modal-footer">
+                <button
+                  type="button"
+                  class="btn btn-secondary"
+                  data-bs-dismiss="modal"
+                >
+                  Batal
+                </button>
+                <button type="button" class="btn btn-danger">Hapus</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Footer -->
+        <footer class="bg-white border-top py-3 px-4">
+          <div class="container-fluid">
+            <div class="row">
+              <div class="col-md-6">
+                <p class="mb-md-0 text-muted">
+                  © 2025 Dinas Pertanian Kabupaten Bulukumba
+                </p>
+              </div>
+              <div class="col-md-6 text-md-end">
+                <a href="#" class="text-decoration-none text-muted me-3"
+                  >Bantuan</a
+                >
+                <a href="#" class="text-decoration-none text-muted me-3"
+                  >Kebijakan Privasi</a
+                >
+                <a href="#" class="text-decoration-none text-muted"
+                  >Syarat & Ketentuan</a
+                >
+              </div>
+            </div>
+          </div>
+        </footer>
+      </div>
+    </div>
+
+    <!-- Bootstrap Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Custom JS -->
+    <script src="../assets/js/main.js"></script>
+  </body>
+</html>

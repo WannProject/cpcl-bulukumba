@@ -1,0 +1,149 @@
+/* 
+ * CPCL - Sistem Informasi Dinas Pertanian Kabupaten Bulukumba
+ * Dashboard CSS
+ */
+
+/* Sidebar */
+#sidebar-wrapper {
+  min-height: 100vh;
+  width: 260px;
+  transition: margin 0.25s ease-out;
+}
+
+#sidebar-wrapper .sidebar-heading {
+  padding: 0.875rem 1.25rem;
+}
+
+#sidebar-wrapper .list-group {
+  width: 260px;
+}
+
+.sidebar-nav .list-group-item {
+  border: none;
+  border-radius: 0;
+  padding-left: 1.5rem;
+}
+
+.sidebar-nav .list-group-item.active {
+  background-color: #e9ecef;
+  color: #198754;
+  font-weight: 600;
+}
+
+.sidebar-nav .list-group-item:hover:not(.active) {
+  background-color: #f8f9fa;
+  color: #198754;
+}
+
+/* Page Content */
+#page-content-wrapper {
+  min-width: 100vw;
+  background-color: #f8f9fa;
+}
+
+body.sb-sidenav-toggled #wrapper #sidebar-wrapper {
+  margin-left: -260px;
+}
+
+/* Navbar Toggle Button */
+#sidebarToggle {
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  transition: background-color 0.3s;
+}
+
+#sidebarToggle:hover {
+  background-color: rgba(0, 0, 0, 0.05);
+}
+
+/* Welcome Card */
+.welcome-card {
+  border-radius: 10px;
+  background: linear-gradient(to right, #198754, #20c997);
+}
+
+/* Avatar */
+.avatar {
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 10px;
+  font-size: 1.25rem;
+}
+
+.avatar-sm {
+  width: 32px;
+  height: 32px;
+  font-size: 1rem;
+}
+
+/* Chart Container */
+.chart-container {
+  position: relative;
+  margin: auto;
+}
+
+/* Activity Feed */
+.activity-feed {
+  max-height: 500px;
+  overflow-y: auto;
+}
+
+.activity-icon {
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+/* Table Styling */
+.table th {
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+/* Color Dots for Charts */
+.color-dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  display: inline-block;
+}
+
+/* Media Queries */
+@media (min-width: 768px) {
+  #sidebar-wrapper {
+    margin-left: 0;
+  }
+
+  #page-content-wrapper {
+    min-width: 0;
+    width: 100%;
+  }
+
+  body.sb-sidenav-toggled #wrapper #sidebar-wrapper {
+    margin-left: -260px;
+  }
+}
+
+@media (max-width: 767.98px) {
+  #sidebar-wrapper {
+    margin-left: -260px;
+  }
+  
+  body.sb-sidenav-toggled #wrapper #sidebar-wrapper {
+    margin-left: 0;
+  }
+  
+  .activity-feed {
+    max-height: 300px;
+  }
+}

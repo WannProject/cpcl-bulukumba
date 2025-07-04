@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Masuk - CPCL Dinas Pertanian Kabupaten Bulukumba</title>
+    <!-- Bootstrap CSS -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <!-- Font Awesome -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <!-- Google Fonts -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="assets/css/style.css" />
+  </head>
+  <body class="bg-light">
+    <div class="container">
+      <div class="row justify-content-center min-vh-100 align-items-center">
+        <div class="col-md-8 col-lg-6">
+          <div class="card border-0 shadow-sm login-card animation-fade-in">
+            <div class="card-body p-4 p-md-5">
+              <div class="text-center mb-4">
+                <a href="index.html">
+                  <img
+                    src="assets/img/logo.svg"
+                    alt="Logo Dinas Pertanian"
+                    height="70"
+                    class="mb-3"
+                  />
+                </a>
+                <h2 class="fw-bold">Masuk ke CPCL</h2>
+                <p class="text-muted">
+                  Sistem Informasi Calon Petani Calon Lahan
+                </p>
+              </div>
+
+              <form id="loginForm" class="needs-validation" novalidate>
+                <div class="mb-4">
+                  <label for="userType" class="form-label">Masuk Sebagai</label>
+                  <select
+                    class="form-select form-control-lg"
+                    id="userType"
+                    required
+                  >
+                    <option value="" selected disabled>Pilih Peran</option>
+                    <option value="kelompok-tani">Kelompok Tani</option>
+                    <option value="admin">Admin</option>
+                    <option value="kepala-dinas">Kepala Dinas</option>
+                  </select>
+                  <div class="invalid-feedback">Silakan pilih peran Anda.</div>
+                </div>
+
+                <div class="mb-4">
+                  <label for="username" class="form-label">Username</label>
+                  <div class="input-group">
+                    <span class="input-group-text"
+                      ><i class="fas fa-user"></i
+                    ></span>
+                    <input
+                      type="text"
+                      class="form-control form-control-lg"
+                      id="username"
+                      placeholder="Masukkan username"
+                      required
+                    />
+                    <div class="invalid-feedback">
+                      Username tidak boleh kosong.
+                    </div>
+                  </div>
+                </div>
+
+                <div class="mb-4">
+                  <label for="password" class="form-label">Password</label>
+                  <div class="input-group">
+                    <span class="input-group-text"
+                      ><i class="fas fa-lock"></i
+                    ></span>
+                    <input
+                      type="password"
+                      class="form-control form-control-lg"
+                      id="password"
+                      placeholder="Masukkan password"
+                      required
+                    />
+                    <button
+                      class="btn btn-outline-secondary"
+                      type="button"
+                      id="togglePassword"
+                    >
+                      <i class="fas fa-eye"></i>
+                    </button>
+                    <div class="invalid-feedback">
+                      Password tidak boleh kosong.
+                    </div>
+                  </div>
+                </div>
+
+                <div class="d-flex justify-content-between mb-4">
+                  <div class="form-check">
+                    <input
+                      class="form-check-input"
+                      type="checkbox"
+                      id="rememberMe"
+                    />
+                    <label class="form-check-label" for="rememberMe"
+                      >Ingat Saya</label
+                    >
+                  </div>
+                  <a href="#" class="text-decoration-none">Lupa Password?</a>
+                </div>
+
+                <div class="d-grid">
+                  <button type="submit" class="btn btn-primary btn-lg">
+                    Masuk
+                  </button>
+                </div>
+              </form>
+
+              <div class="text-center mt-4">
+                <p>
+                  Belum memiliki akun?
+                  <a href="register.html" class="text-decoration-none"
+                    >Daftar Sekarang</a
+                  >
+                </p>
+              </div>
+
+              <div class="text-center mt-4">
+                <a href="index.html" class="text-decoration-none"
+                  ><i class="fas fa-arrow-left me-1"></i> Kembali ke Beranda</a
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Bootstrap Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Custom JS -->
+    <script src="assets/js/main.js"></script>
+    <script src="assets/js/login.js"></script>
+  </body>
+</html>

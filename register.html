@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>
+      Pendaftaran Kelompok Tani - CPCL Dinas Pertanian Kabupaten Bulukumba
+    </title>
+    <!-- Bootstrap CSS -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <!-- Font Awesome -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <!-- Google Fonts -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="assets/css/style.css" />
+  </head>
+  <body class="bg-light">
+    <div class="container my-5">
+      <div class="row justify-content-center">
+        <div class="col-lg-8">
+          <div class="card border-0 shadow-sm animation-fade-in">
+            <div class="card-body p-4 p-md-5">
+              <div class="text-center mb-4">
+                <a href="index.html">
+                  <img
+                    src="assets/img/logo.svg"
+                    alt="Logo Dinas Pertanian"
+                    height="70"
+                    class="mb-3"
+                  />
+                </a>
+                <h2 class="fw-bold">Daftar Kelompok Tani</h2>
+                <p class="text-muted">
+                  Isi formulir berikut untuk mendaftarkan kelompok tani Anda
+                </p>
+              </div>
+
+              <form id="registrationForm" class="needs-validation" novalidate>
+                <div class="row g-3">
+                  <div class="col-12">
+                    <h5 class="border-start border-4 border-primary ps-3 mb-4">
+                      Informasi Kelompok Tani
+                    </h5>
+                  </div>
+
+                  <div class="col-md-6 mb-3">
+                    <label for="namaKelompok" class="form-label"
+                      >Nama Kelompok Tani
+                      <span class="text-danger">*</span></label
+                    >
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="namaKelompok"
+                      required
+                    />
+                    <div class="invalid-feedback">
+                      Nama kelompok tani harus diisi.
+                    </div>
+                  </div>
+
+                  <div class="col-md-6 mb-3">
+                    <label for="noRegistrasi" class="form-label"
+                      >Nomor Registrasi
+                      <span class="text-danger">*</span></label
+                    >
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="noRegistrasi"
+                      required
+                    />
+                    <div class="invalid-feedback">
+                      Nomor registrasi harus diisi.
+                    </div>
+                  </div>
+
+                  <div class="col-md-6 mb-3">
+                    <label for="tahunBentuk" class="form-label"
+                      >Tahun Pembentukan
+                      <span class="text-danger">*</span></label
+                    >
+                    <input
+                      type="number"
+                      class="form-control"
+                      id="tahunBentuk"
+                      min="1900"
+                      max="2025"
+                      required
+                    />
+                    <div class="invalid-feedback">
+                      Tahun pembentukan harus diisi dengan benar.
+                    </div>
+                  </div>
+
+                  <div class="col-md-6 mb-3">
+                    <label for="jumlahAnggota" class="form-label"
+                      >Jumlah Anggota <span class="text-danger">*</span></label
+                    >
+                    <input
+                      type="number"
+                      class="form-control"
+                      id="jumlahAnggota"
+                      min="1"
+                      required
+                    />
+                    <div class="invalid-feedback">
+                      Jumlah anggota harus diisi.
+                    </div>
+                  </div>
+
+                  <div class="col-12 mb-3">
+                    <label for="alamat" class="form-label"
+                      >Alamat Kelompok <span class="text-danger">*</span></label
+                    >
+                    <textarea
+                      class="form-control"
+                      id="alamat"
+                      rows="3"
+                      required
+                    ></textarea>
+                    <div class="invalid-feedback">Alamat harus diisi.</div>
+                  </div>
+
+                  <div class="col-md-6 mb-3">
+                    <label for="desa" class="form-label"
+                      >Desa/Kelurahan <span class="text-danger">*</span></label
+                    >
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="desa"
+                      required
+                    />
+                    <div class="invalid-feedback">
+                      Desa/Kelurahan harus diisi.
+                    </div>
+                  </div>
+
+                  <div class="col-md-6 mb-3">
+                    <label for="kecamatan" class="form-label"
+                      >Kecamatan <span class="text-danger">*</span></label
+                    >
+                    <select class="form-select" id="kecamatan" required>
+                      <option value="" selected disabled>
+                        Pilih Kecamatan
+                      </option>
+                      <option value="Ujung Bulu">Ujung Bulu</option>
+                      <option value="Gantarang">Gantarang</option>
+                      <option value="Ujung Loe">Ujung Loe</option>
+                      <option value="Bontobahari">Bontobahari</option>
+                      <option value="Bontotiro">Bontotiro</option>
+                      <option value="Herlang">Herlang</option>
+                      <option value="Kajang">Kajang</option>
+                      <option value="Bulukumpa">Bulukumpa</option>
+                      <option value="Rilau Ale">Rilau Ale</option>
+                      <option value="Kindang">Kindang</option>
+                    </select>
+                    <div class="invalid-feedback">Kecamatan harus dipilih.</div>
+                  </div>
+
+                  <div class="col-12">
+                    <h5
+                      class="border-start border-4 border-primary ps-3 mb-4 mt-3"
+                    >
+                      Informasi Ketua Kelompok
+                    </h5>
+                  </div>
+
+                  <div class="col-md-6 mb-3">
+                    <label for="namaKetua" class="form-label"
+                      >Nama Ketua <span class="text-danger">*</span></label
+                    >
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="namaKetua"
+                      required
+                    />
+                    <div class="invalid-feedback">Nama ketua harus diisi.</div>
+                  </div>
+
+                  <div class="col-md-6 mb-3">
+                    <label for="nik" class="form-label"
+                      >NIK <span class="text-danger">*</span></label
+                    >
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="nik"
+                      pattern="[0-9]{16}"
+                      required
+                    />
+                    <div class="invalid-feedback">
+                      NIK harus terdiri dari 16 digit angka.
+                    </div>
+                  </div>
+
+                  <div class="col-md-6 mb-3">
+                    <label for="noHP" class="form-label"
+                      >Nomor HP <span class="text-danger">*</span></label
+                    >
+                    <input type="tel" class="form-control" id="noHP" required />
+                    <div class="invalid-feedback">Nomor HP harus diisi.</div>
+                  </div>
+
+                  <div class="col-md-6 mb-3">
+                    <label for="email" class="form-label">Email</label>
+                    <input type="email" class="form-control" id="email" />
+                    <div class="invalid-feedback">
+                      Format email tidak valid.
+                    </div>
+                  </div>
+
+                  <div class="col-12">
+                    <h5
+                      class="border-start border-4 border-primary ps-3 mb-4 mt-3"
+                    >
+                      Akun Pengguna
+                    </h5>
+                  </div>
+
+                  <div class="col-md-6 mb-3">
+                    <label for="username" class="form-label"
+                      >Username <span class="text-danger">*</span></label
+                    >
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="username"
+                      required
+                    />
+                    <div class="invalid-feedback">Username harus diisi.</div>
+                  </div>
+
+                  <div class="col-md-6 mb-3">
+                    <label for="password" class="form-label"
+                      >Password <span class="text-danger">*</span></label
+                    >
+                    <div class="input-group">
+                      <input
+                        type="password"
+                        class="form-control"
+                        id="password"
+                        required
+                      />
+                      <button
+                        class="btn btn-outline-secondary"
+                        type="button"
+                        id="togglePassword"
+                      >
+                        <i class="fas fa-eye"></i>
+                      </button>
+                    </div>
+                    <div class="form-text">
+                      Password minimal 8 karakter dengan kombinasi huruf dan
+                      angka.
+                    </div>
+                    <div class="invalid-feedback">
+                      Password harus diisi dengan benar.
+                    </div>
+                  </div>
+
+                  <div class="col-md-6 mb-3">
+                    <label for="confirmPassword" class="form-label"
+                      >Konfirmasi Password
+                      <span class="text-danger">*</span></label
+                    >
+                    <div class="input-group">
+                      <input
+                        type="password"
+                        class="form-control"
+                        id="confirmPassword"
+                        required
+                      />
+                      <button
+                        class="btn btn-outline-secondary"
+                        type="button"
+                        id="toggleConfirmPassword"
+                      >
+                        <i class="fas fa-eye"></i>
+                      </button>
+                    </div>
+                    <div class="invalid-feedback">
+                      Konfirmasi password harus sama dengan password.
+                    </div>
+                  </div>
+
+                  <div class="col-12 mb-3">
+                    <div class="form-check">
+                      <input
+                        class="form-check-input"
+                        type="checkbox"
+                        id="agreeTerms"
+                        required
+                      />
+                      <label class="form-check-label" for="agreeTerms">
+                        Saya menyetujui
+                        <a href="#" class="text-decoration-none"
+                          >syarat dan ketentuan</a
+                        >
+                        yang berlaku
+                      </label>
+                      <div class="invalid-feedback">
+                        Anda harus menyetujui syarat dan ketentuan.
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="col-12 text-center mt-4">
+                    <button type="submit" class="btn btn-primary btn-lg px-5">
+                      Daftar Sekarang
+                    </button>
+                  </div>
+
+                  <div class="col-12 text-center mt-3">
+                    <p>
+                      Sudah memiliki akun?
+                      <a href="login.html" class="text-decoration-none"
+                        >Masuk di sini</a
+                      >
+                    </p>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Bootstrap Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Custom JS -->
+    <script src="assets/js/main.js"></script>
+    <script src="assets/js/register.js"></script>
+  </body>
+</html>

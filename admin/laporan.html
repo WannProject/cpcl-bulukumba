@@ -1,0 +1,622 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Laporan - CPCL Dinas Pertanian</title>
+    <!-- Bootstrap CSS -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <!-- Font Awesome -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <!-- Google Fonts -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="../assets/css/style.css" />
+    <link rel="stylesheet" href="../assets/css/dashboard.css" />
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  </head>
+  <body>
+    <div class="d-flex" id="wrapper">
+      <!-- Sidebar -->
+      <div class="bg-white border-end" id="sidebar-wrapper">
+        <div class="sidebar-heading text-center py-4 border-bottom">
+          <img
+            src="../assets/img/logo.svg"
+            alt="Logo"
+            height="50"
+            class="mb-2"
+          />
+          <div class="fs-5 fw-semibold">CPCL Pertanian</div>
+          <div class="small text-muted">Admin</div>
+        </div>
+        <div class="list-group list-group-flush sidebar-nav">
+          <a
+            href="dashboard.html"
+            class="list-group-item list-group-item-action py-3"
+          >
+            <i class="fas fa-tachometer-alt me-2"></i> Dashboard
+          </a>
+          <a
+            href="pengajuan.html"
+            class="list-group-item list-group-item-action py-3"
+          >
+            <i class="fas fa-file-alt me-2"></i> Pengajuan Bantuan
+          </a>
+          <a
+            href="kelompok-tani.html"
+            class="list-group-item list-group-item-action py-3"
+          >
+            <i class="fas fa-users me-2"></i> Kelompok Tani
+          </a>
+          <a
+            href="laporan.html"
+            class="list-group-item list-group-item-action active py-3"
+          >
+            <i class="fas fa-chart-bar me-2"></i> Laporan
+          </a>
+          <a
+            href="pengaturan.html"
+            class="list-group-item list-group-item-action py-3"
+          >
+            <i class="fas fa-cog me-2"></i> Pengaturan
+          </a>
+        </div>
+        <div class="mt-auto border-top p-3">
+          <a href="../login.html" class="btn btn-outline-danger d-block">
+            <i class="fas fa-sign-out-alt me-2"></i> Keluar
+          </a>
+        </div>
+      </div>
+
+      <!-- Page Content -->
+      <div id="page-content-wrapper">
+        <!-- Top navigation -->
+        <nav
+          class="navbar navbar-expand-lg navbar-light bg-white border-bottom py-3"
+        >
+          <div class="container-fluid">
+            <button class="btn" id="sidebarToggle">
+              <i class="fas fa-bars"></i>
+            </button>
+            <div class="d-none d-md-block ms-2">
+              <h5 class="mb-0">Laporan Pengajuan Bantuan</h5>
+            </div>
+            <div class="ms-auto d-flex align-items-center">
+              <div class="dropdown me-3">
+                <a
+                  class="nav-link dropdown-toggle"
+                  href="#"
+                  role="button"
+                  id="notificationDropdown"
+                  data-bs-toggle="dropdown"
+                  aria-expanded="false"
+                >
+                  <i class="fas fa-bell position-relative">
+                    <span
+                      class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger"
+                      >5</span
+                    >
+                  </i>
+                </a>
+                <ul
+                  class="dropdown-menu dropdown-menu-end shadow-sm"
+                  aria-labelledby="notificationDropdown"
+                >
+                  <li><h6 class="dropdown-header">Notifikasi</h6></li>
+                  <li><hr class="dropdown-divider" /></li>
+                  <li>
+                    <a class="dropdown-item" href="#">Pengajuan bantuan baru</a>
+                  </li>
+                  <li>
+                    <a class="dropdown-item" href="#"
+                      >Persetujuan dari Kepala Dinas</a
+                    >
+                  </li>
+                  <li>
+                    <a class="dropdown-item" href="#"
+                      >Pendaftaran kelompok tani baru</a
+                    >
+                  </li>
+                  <li>
+                    <a class="dropdown-item" href="#"
+                      >Pengajuan menunggu verifikasi</a
+                    >
+                  </li>
+                  <li>
+                    <a class="dropdown-item" href="#">Pengajuan disetujui</a>
+                  </li>
+                </ul>
+              </div>
+
+              <div
+                class="avatar-sm bg-primary rounded-circle text-white me-2 d-flex align-items-center justify-content-center"
+              >
+                AD
+              </div>
+              <span class="d-none d-md-block">Admin Dinas</span>
+            </div>
+          </div>
+        </nav>
+
+        <!-- Main content -->
+        <div class="container-fluid p-4">
+          <!-- Filter Laporan -->
+          <div class="row mb-4">
+            <div class="col-12">
+              <div class="card border-0 shadow-sm">
+                <div class="card-body">
+                  <h6 class="card-title mb-3">Filter Laporan</h6>
+                  <div class="row g-3">
+                    <div class="col-md-3">
+                      <label class="form-label">Periode</label>
+                      <select class="form-select">
+                        <option value="">Pilih Periode</option>
+                        <option>Hari Ini</option>
+                        <option>Minggu Ini</option>
+                        <option>Bulan Ini</option>
+                        <option>Triwulan Ini</option>
+                        <option>Semester Ini</option>
+                        <option>Tahun Ini</option>
+                        <option value="custom">Custom</option>
+                      </select>
+                    </div>
+                    <div class="col-md-3">
+                      <label class="form-label">Dari Tanggal</label>
+                      <input type="date" class="form-control" />
+                    </div>
+                    <div class="col-md-3">
+                      <label class="form-label">Sampai Tanggal</label>
+                      <input type="date" class="form-control" />
+                    </div>
+                    <div class="col-md-3">
+                      <label class="form-label">Jenis Bantuan</label>
+                      <select class="form-select">
+                        <option value="">Semua Jenis</option>
+                        <option>Bibit Padi</option>
+                        <option>Bibit Jagung</option>
+                        <option>Pupuk Subsidi</option>
+                        <option>Pestisida</option>
+                        <option>Alat Pertanian</option>
+                      </select>
+                    </div>
+                    <div class="col-md-3">
+                      <label class="form-label">Kecamatan</label>
+                      <select class="form-select">
+                        <option value="">Semua Kecamatan</option>
+                        <option>Gantarang</option>
+                        <option>Ujung Loe</option>
+                        <option>Bontobahari</option>
+                        <option>Bontotiro</option>
+                        <option>Kajang</option>
+                      </select>
+                    </div>
+                    <div class="col-md-3">
+                      <label class="form-label">Status</label>
+                      <select class="form-select">
+                        <option value="">Semua Status</option>
+                        <option>Menunggu Verifikasi</option>
+                        <option>Terverifikasi</option>
+                        <option>Disetujui</option>
+                        <option>Ditolak</option>
+                      </select>
+                    </div>
+                    <div class="col-md-3 d-flex align-items-end">
+                      <button class="btn btn-primary w-100">
+                        <i class="fas fa-filter me-2"></i> Filter
+                      </button>
+                    </div>
+                    <div class="col-md-3 d-flex align-items-end">
+                      <button class="btn btn-outline-secondary w-100">
+                        <i class="fas fa-sync-alt me-2"></i> Reset
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Statistik Utama -->
+          <div class="row mb-4">
+            <div class="col-md-3">
+              <div class="card border-0 shadow-sm">
+                <div class="card-body">
+                  <div
+                    class="d-flex justify-content-between align-items-center"
+                  >
+                    <div>
+                      <h6 class="text-muted mb-2">Total Pengajuan</h6>
+                      <h3 class="mb-0">125</h3>
+                    </div>
+                    <div class="bg-primary bg-opacity-10 p-3 rounded">
+                      <i class="fas fa-file-alt text-primary fs-4"></i>
+                    </div>
+                  </div>
+                  <div class="mt-3">
+                    <span class="badge bg-success">+12%</span>
+                    <small class="text-muted ms-2">dari bulan lalu</small>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-3">
+              <div class="card border-0 shadow-sm">
+                <div class="card-body">
+                  <div
+                    class="d-flex justify-content-between align-items-center"
+                  >
+                    <div>
+                      <h6 class="text-muted mb-2">Disetujui</h6>
+                      <h3 class="mb-0">78</h3>
+                    </div>
+                    <div class="bg-success bg-opacity-10 p-3 rounded">
+                      <i class="fas fa-check-circle text-success fs-4"></i>
+                    </div>
+                  </div>
+                  <div class="mt-3">
+                    <span class="badge bg-success">+8%</span>
+                    <small class="text-muted ms-2">dari bulan lalu</small>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-3">
+              <div class="card border-0 shadow-sm">
+                <div class="card-body">
+                  <div
+                    class="d-flex justify-content-between align-items-center"
+                  >
+                    <div>
+                      <h6 class="text-muted mb-2">Ditolak</h6>
+                      <h3 class="mb-0">15</h3>
+                    </div>
+                    <div class="bg-danger bg-opacity-10 p-3 rounded">
+                      <i class="fas fa-times-circle text-danger fs-4"></i>
+                    </div>
+                  </div>
+                  <div class="mt-3">
+                    <span class="badge bg-danger">-5%</span>
+                    <small class="text-muted ms-2">dari bulan lalu</small>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-3">
+              <div class="card border-0 shadow-sm">
+                <div class="card-body">
+                  <div
+                    class="d-flex justify-content-between align-items-center"
+                  >
+                    <div>
+                      <h6 class="text-muted mb-2">Menunggu</h6>
+                      <h3 class="mb-0">32</h3>
+                    </div>
+                    <div class="bg-warning bg-opacity-10 p-3 rounded">
+                      <i class="fas fa-clock text-warning fs-4"></i>
+                    </div>
+                  </div>
+                  <div class="mt-3">
+                    <span class="badge bg-warning text-dark">+3%</span>
+                    <small class="text-muted ms-2">dari bulan lalu</small>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Tabel Laporan -->
+          <div class="row">
+            <div class="col-12">
+              <div class="card border-0 shadow-sm">
+                <div class="card-body">
+                  <div
+                    class="d-flex justify-content-between align-items-center mb-3"
+                  >
+                    <h6 class="card-title mb-0">Detail Pengajuan</h6>
+                    <div>
+                      <button class="btn btn-sm btn-outline-primary me-2">
+                        <i class="fas fa-file-excel me-2"></i> Excel
+                      </button>
+                      <button
+                        class="btn btn-sm btn-outline-danger"
+                        onclick="window.print()"
+                      >
+                        <i class="fas fa-file-pdf me-2"></i> PDF
+                      </button>
+                    </div>
+                  </div>
+                  <div class="table-responsive">
+                    <table class="table table-hover align-middle">
+                      <thead class="table-light">
+                        <tr>
+                          <th scope="col">ID</th>
+                          <th scope="col">Kelompok Tani</th>
+                          <th scope="col">Kecamatan</th>
+                          <th scope="col">Jenis Bantuan</th>
+                          <th scope="col">Jumlah</th>
+                          <th scope="col">Tanggal</th>
+                          <th scope="col">Status</th>
+                          <th scope="col">Verifikator</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td>#BT-2025-001</td>
+                          <td>Kelompok Tani Makmur</td>
+                          <td>Gantarang</td>
+                          <td>Bibit Padi</td>
+                          <td>500 Kg</td>
+                          <td>20 Mei 2025</td>
+                          <td>
+                            <span class="badge bg-success">Disetujui</span>
+                          </td>
+                          <td>Budi Santoso</td>
+                        </tr>
+                        <tr>
+                          <td>#BT-2025-002</td>
+                          <td>Kelompok Tani Sejahtera</td>
+                          <td>Ujung Loe</td>
+                          <td>Pupuk Subsidi</td>
+                          <td>200 Kg</td>
+                          <td>19 Mei 2025</td>
+                          <td>
+                            <span class="badge bg-success">Disetujui</span>
+                          </td>
+                          <td>Ani Wijaya</td>
+                        </tr>
+                        <tr>
+                          <td>#BT-2025-003</td>
+                          <td>Kelompok Tani Maju</td>
+                          <td>Bontobahari</td>
+                          <td>Bibit Jagung</td>
+                          <td>300 Kg</td>
+                          <td>18 Mei 2025</td>
+                          <td><span class="badge bg-danger">Ditolak</span></td>
+                          <td>Budi Santoso</td>
+                        </tr>
+                        <tr>
+                          <td>#BT-2025-004</td>
+                          <td>Kelompok Tani Bahagia</td>
+                          <td>Bontotiro</td>
+                          <td>Pestisida</td>
+                          <td>50 Liter</td>
+                          <td>17 Mei 2025</td>
+                          <td>
+                            <span class="badge bg-success">Disetujui</span>
+                          </td>
+                          <td>Ani Wijaya</td>
+                        </tr>
+                        <tr>
+                          <td>#BT-2025-005</td>
+                          <td>Kelompok Tani Subur</td>
+                          <td>Gantarang</td>
+                          <td>Alat Pertanian</td>
+                          <td>10 Unit</td>
+                          <td>16 Mei 2025</td>
+                          <td>
+                            <span class="badge bg-info">Terverifikasi</span>
+                          </td>
+                          <td>Budi Santoso</td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+                <div class="card-footer bg-white py-3">
+                  <nav aria-label="Page navigation">
+                    <ul class="pagination justify-content-center mb-0">
+                      <li class="page-item disabled">
+                        <a class="page-link" href="#" tabindex="-1">Previous</a>
+                      </li>
+                      <li class="page-item active">
+                        <a class="page-link" href="#">1</a>
+                      </li>
+                      <li class="page-item">
+                        <a class="page-link" href="#">2</a>
+                      </li>
+                      <li class="page-item">
+                        <a class="page-link" href="#">3</a>
+                      </li>
+                      <li class="page-item">
+                        <a class="page-link" href="#">Next</a>
+                      </li>
+                    </ul>
+                  </nav>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Footer -->
+        <footer class="bg-white border-top py-3 px-4">
+          <div class="container-fluid">
+            <div class="row">
+              <div class="col-md-6">
+                <p class="mb-md-0 text-muted">
+                  © 2025 Dinas Pertanian Kabupaten Bulukumba
+                </p>
+              </div>
+              <div class="col-md-6 text-md-end">
+                <a href="#" class="text-decoration-none text-muted me-3"
+                  >Bantuan</a
+                >
+                <a href="#" class="text-decoration-none text-muted me-3"
+                  >Kebijakan Privasi</a
+                >
+                <a href="#" class="text-decoration-none text-muted"
+                  >Syarat & Ketentuan</a
+                >
+              </div>
+            </div>
+          </div>
+        </footer>
+      </div>
+    </div>
+
+    <!-- Bootstrap Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Custom JS -->
+    <script src="../assets/js/main.js"></script>
+    <script>
+      // Chart.js Implementation
+      document.addEventListener("DOMContentLoaded", function () {
+        // Line Chart
+        const lineCtx = document.getElementById("lineChart").getContext("2d");
+        const lineChart = new Chart(lineCtx, {
+          type: "line",
+          data: {
+            labels: [
+              "Jan",
+              "Feb",
+              "Mar",
+              "Apr",
+              "Mei",
+              "Jun",
+              "Jul",
+              "Agu",
+              "Sep",
+              "Okt",
+              "Nov",
+              "Des",
+            ],
+            datasets: [
+              {
+                label: "Pengajuan",
+                data: [12, 19, 15, 22, 18, 25, 20, 23, 19, 22, 25, 28],
+                borderColor: "#3b7ddd",
+                backgroundColor: "rgba(59, 125, 221, 0.1)",
+                tension: 0.3,
+                fill: true,
+              },
+              {
+                label: "Disetujui",
+                data: [8, 14, 10, 16, 12, 18, 15, 17, 14, 16, 20, 22],
+                borderColor: "#1cbb8c",
+                backgroundColor: "rgba(28, 187, 140, 0.1)",
+                tension: 0.3,
+                fill: true,
+              },
+              {
+                label: "Ditolak",
+                data: [2, 3, 2, 4, 3, 5, 2, 3, 2, 3, 2, 4],
+                borderColor: "#fc4b6c",
+                backgroundColor: "rgba(252, 75, 108, 0.1)",
+                tension: 0.3,
+                fill: true,
+              },
+            ],
+          },
+          options: {
+            responsive: true,
+            plugins: {
+              legend: {
+                position: "top",
+              },
+              tooltip: {
+                mode: "index",
+                intersect: false,
+              },
+            },
+            scales: {
+              y: {
+                beginAtZero: true,
+              },
+            },
+          },
+        });
+
+        // Pie Chart
+        const pieCtx = document.getElementById("pieChart").getContext("2d");
+        const pieChart = new Chart(pieCtx, {
+          type: "pie",
+          data: {
+            labels: [
+              "Bibit Padi",
+              "Bibit Jagung",
+              "Pupuk Subsidi",
+              "Pestisida",
+              "Alat Pertanian",
+            ],
+            datasets: [
+              {
+                data: [35, 25, 20, 12, 8],
+                backgroundColor: [
+                  "#3b7ddd",
+                  "#1cbb8c",
+                  "#fc4b6c",
+                  "#ffb22b",
+                  "#6c757d",
+                ],
+                borderWidth: 1,
+              },
+            ],
+          },
+          options: {
+            responsive: true,
+            plugins: {
+              legend: {
+                position: "right",
+              },
+            },
+          },
+        });
+
+        // Bar Chart
+        const barCtx = document.getElementById("barChart").getContext("2d");
+        const barChart = new Chart(barCtx, {
+          type: "bar",
+          data: {
+            labels: [
+              "Gantarang",
+              "Ujung Loe",
+              "Bontobahari",
+              "Bontotiro",
+              "Kajang",
+            ],
+            datasets: [
+              {
+                label: "Pengajuan",
+                data: [45, 30, 25, 20, 15],
+                backgroundColor: "#3b7ddd",
+              },
+              {
+                label: "Disetujui",
+                data: [32, 22, 18, 15, 10],
+                backgroundColor: "#1cbb8c",
+              },
+              {
+                label: "Ditolak",
+                data: [5, 3, 2, 1, 1],
+                backgroundColor: "#fc4b6c",
+              },
+            ],
+          },
+          options: {
+            responsive: true,
+            plugins: {
+              legend: {
+                position: "top",
+              },
+            },
+            scales: {
+              y: {
+                beginAtZero: true,
+              },
+            },
+          },
+        });
+      });
+    </script>
+  </body>
+</html>

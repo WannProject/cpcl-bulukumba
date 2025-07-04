@@ -1,0 +1,1020 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Pengajuan Bantuan - CPCL Dinas Pertanian</title>
+    <!-- Bootstrap CSS -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <!-- Font Awesome -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <!-- Google Fonts -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="../assets/css/style.css" />
+    <link rel="stylesheet" href="../assets/css/dashboard.css" />
+  </head>
+  <body>
+    <div class="d-flex" id="wrapper">
+      <!-- Sidebar -->
+      <div class="bg-white border-end" id="sidebar-wrapper">
+        <div class="sidebar-heading text-center py-4 border-bottom">
+          <img
+            src="../assets/img/logo.svg"
+            alt="Logo"
+            height="50"
+            class="mb-2"
+          />
+          <div class="fs-5 fw-semibold">CPCL Pertanian</div>
+          <div class="small text-muted">Kelompok Tani</div>
+        </div>
+        <div class="list-group list-group-flush sidebar-nav">
+          <a
+            href="dashboard.html"
+            class="list-group-item list-group-item-action py-3"
+          >
+            <i class="fas fa-tachometer-alt me-2"></i> Dashboard
+          </a>
+          <a
+            href="pengajuan.html"
+            class="list-group-item list-group-item-action active py-3"
+          >
+            <i class="fas fa-file-alt me-2"></i> Pengajuan Bantuan
+          </a>
+          <a
+            href="profil.html"
+            class="list-group-item list-group-item-action py-3"
+          >
+            <i class="fas fa-user me-2"></i> Profil Kelompok
+          </a>
+        </div>
+        <div class="mt-auto border-top p-3">
+          <a href="../login.html" class="btn btn-outline-danger d-block">
+            <i class="fas fa-sign-out-alt me-2"></i> Keluar
+          </a>
+        </div>
+      </div>
+
+      <!-- Page Content -->
+      <div id="page-content-wrapper">
+        <!-- Top navigation -->
+        <nav
+          class="navbar navbar-expand-lg navbar-light bg-white border-bottom py-3"
+        >
+          <div class="container-fluid">
+            <button class="btn" id="sidebarToggle">
+              <i class="fas fa-bars"></i>
+            </button>
+            <div class="d-none d-md-block ms-2">
+              <h5 class="mb-0">Pengajuan Bantuan</h5>
+            </div>
+            <div class="ms-auto d-flex align-items-center">
+              <div class="dropdown me-3">
+                <a
+                  class="nav-link dropdown-toggle"
+                  href="#"
+                  role="button"
+                  id="notificationDropdown"
+                  data-bs-toggle="dropdown"
+                  aria-expanded="false"
+                >
+                  <i class="fas fa-bell position-relative">
+                    <span
+                      class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger"
+                      >3</span
+                    >
+                  </i>
+                </a>
+                <ul
+                  class="dropdown-menu dropdown-menu-end shadow-sm"
+                  aria-labelledby="notificationDropdown"
+                >
+                  <li><h6 class="dropdown-header">Notifikasi</h6></li>
+                  <li><hr class="dropdown-divider" /></li>
+                  <li>
+                    <a class="dropdown-item" href="#"
+                      >Pengajuan telah diterima</a
+                    >
+                  </li>
+                  <li>
+                    <a class="dropdown-item" href="#"
+                      >Proses verifikasi selesai</a
+                    >
+                  </li>
+                  <li>
+                    <a class="dropdown-item" href="#"
+                      >Jadwal penerimaan bantuan</a
+                    >
+                  </li>
+                </ul>
+              </div>
+              <div class="dropdown">
+                <a
+                  class="nav-link dropdown-toggle d-flex align-items-center"
+                  href="#"
+                  role="button"
+                  id="userDropdown"
+                  data-bs-toggle="dropdown"
+                  aria-expanded="false"
+                >
+                  <div
+                    class="avatar-sm bg-primary rounded-circle text-white me-2 d-flex align-items-center justify-content-center"
+                  >
+                    KT
+                  </div>
+                  <span class="d-none d-md-block">Kelompok Tani Makmur</span>
+                </a>
+                <ul
+                  class="dropdown-menu dropdown-menu-end shadow-sm"
+                  aria-labelledby="userDropdown"
+                >
+                  <li>
+                    <a class="dropdown-item" href="profil.html"
+                      ><i class="fas fa-user me-2"></i> Profil</a
+                    >
+                  </li>
+                  <li><hr class="dropdown-divider" /></li>
+                  <li>
+                    <a class="dropdown-item" href="../login.html"
+                      ><i class="fas fa-sign-out-alt me-2"></i> Keluar</a
+                    >
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </nav>
+
+        <!-- Main content -->
+        <div class="container-fluid p-4">
+          <div class="row mb-4">
+            <div class="col-12">
+              <ul class="nav nav-pills mb-4 animation-fade-in">
+                <li class="nav-item">
+                  <a
+                    class="nav-link active"
+                    href="#form-tab"
+                    data-bs-toggle="tab"
+                    >Form Pengajuan</a
+                  >
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="#history-tab" data-bs-toggle="tab"
+                    >Riwayat Pengajuan</a
+                  >
+                </li>
+              </ul>
+
+              <div class="tab-content">
+                <!-- Form Pengajuan Tab -->
+                <div class="tab-pane fade show active" id="form-tab">
+                  <div class="card border-0 shadow-sm animation-fade-in">
+                    <div class="card-header bg-white py-3 border-0">
+                      <h5 class="mb-0">
+                        Form Pengajuan Bantuan Tanaman Pangan
+                      </h5>
+                    </div>
+                    <div class="card-body p-4">
+                      <form
+                        id="applicationForm"
+                        class="needs-validation"
+                        novalidate
+                      >
+                        <div class="row g-3">
+                          <div class="col-12">
+                            <h6
+                              class="border-start border-4 border-primary ps-3 mb-4"
+                            >
+                              Informasi Kelompok Tani
+                            </h6>
+                          </div>
+
+                          <div class="col-md-6 mb-3">
+                            <label for="namaKelompok" class="form-label"
+                              >Nama Kelompok Tani
+                              <span class="text-danger">*</span></label
+                            >
+                            <input
+                              type="text"
+                              class="form-control"
+                              id="namaKelompok"
+                              value="Kelompok Tani Makmur"
+                              readonly
+                            />
+                          </div>
+
+                          <div class="col-md-6 mb-3">
+                            <label for="noRegistrasi" class="form-label"
+                              >Nomor Registrasi
+                              <span class="text-danger">*</span></label
+                            >
+                            <input
+                              type="text"
+                              class="form-control"
+                              id="noRegistrasi"
+                              value="KT-2025-001"
+                              readonly
+                            />
+                          </div>
+
+                          <div class="col-md-6 mb-3">
+                            <label for="namaKetua" class="form-label"
+                              >Nama Ketua
+                              <span class="text-danger">*</span></label
+                            >
+                            <input
+                              type="text"
+                              class="form-control"
+                              id="namaKetua"
+                              value="Budi Santoso"
+                              readonly
+                            />
+                          </div>
+
+                          <div class="col-md-6 mb-3">
+                            <label for="alamat" class="form-label"
+                              >Alamat <span class="text-danger">*</span></label
+                            >
+                            <input
+                              type="text"
+                              class="form-control"
+                              id="alamat"
+                              value="Desa Makmur, Kec. Gantarang"
+                              readonly
+                            />
+                          </div>
+
+                          <div class="col-12">
+                            <h6
+                              class="border-start border-4 border-primary ps-3 mb-4 mt-3"
+                            >
+                              Informasi Lahan
+                            </h6>
+                          </div>
+
+                          <div class="col-md-6 mb-3">
+                            <label for="luasLahan" class="form-label"
+                              >Luas Lahan (Hektar)
+                              <span class="text-danger">*</span></label
+                            >
+                            <input
+                              type="number"
+                              class="form-control"
+                              id="luasLahan"
+                              min="0.1"
+                              step="0.1"
+                              required
+                            />
+                            <div class="invalid-feedback">
+                              Luas lahan harus diisi.
+                            </div>
+                          </div>
+
+                          <div class="col-md-6 mb-3">
+                            <label for="statusLahan" class="form-label"
+                              >Status Kepemilikan Lahan
+                              <span class="text-danger">*</span></label
+                            >
+                            <select
+                              class="form-select"
+                              id="statusLahan"
+                              required
+                            >
+                              <option value="" selected disabled>
+                                Pilih Status Kepemilikan
+                              </option>
+                              <option value="Milik Sendiri">
+                                Milik Sendiri
+                              </option>
+                              <option value="Sewa">Sewa</option>
+                              <option value="Bagi Hasil">Bagi Hasil</option>
+                              <option value="Lainnya">Lainnya</option>
+                            </select>
+                            <div class="invalid-feedback">
+                              Status kepemilikan lahan harus dipilih.
+                            </div>
+                          </div>
+
+                          <div class="col-md-6 mb-3">
+                            <label for="lokasiLahan" class="form-label"
+                              >Lokasi Lahan
+                              <span class="text-danger">*</span></label
+                            >
+                            <input
+                              type="text"
+                              class="form-control"
+                              id="lokasiLahan"
+                              required
+                            />
+                            <div class="invalid-feedback">
+                              Lokasi lahan harus diisi.
+                            </div>
+                          </div>
+
+                          <div class="col-md-6 mb-3">
+                            <label for="kondisiLahan" class="form-label"
+                              >Kondisi Lahan
+                              <span class="text-danger">*</span></label
+                            >
+                            <select
+                              class="form-select"
+                              id="kondisiLahan"
+                              required
+                            >
+                              <option value="" selected disabled>
+                                Pilih Kondisi Lahan
+                              </option>
+                              <option value="Sawah Irigasi">
+                                Sawah Irigasi
+                              </option>
+                              <option value="Sawah Tadah Hujan">
+                                Sawah Tadah Hujan
+                              </option>
+                              <option value="Lahan Kering">Lahan Kering</option>
+                              <option value="Lainnya">Lainnya</option>
+                            </select>
+                            <div class="invalid-feedback">
+                              Kondisi lahan harus dipilih.
+                            </div>
+                          </div>
+
+                          <div class="col-12">
+                            <h6
+                              class="border-start border-4 border-primary ps-3 mb-4 mt-3"
+                            >
+                              Informasi Bantuan
+                            </h6>
+                          </div>
+
+                          <div class="col-md-6 mb-3">
+                            <label for="jenisBantuan" class="form-label"
+                              >Jenis Bantuan
+                              <span class="text-danger">*</span></label
+                            >
+                            <select
+                              class="form-select"
+                              id="jenisBantuan"
+                              required
+                            >
+                              <option value="" selected disabled>
+                                Pilih Jenis Bantuan
+                              </option>
+                              <option value="Bibit Padi">Bibit Padi</option>
+                              <option value="Bibit Jagung">Bibit Jagung</option>
+                              <option value="Bibit Kedelai">
+                                Bibit Kedelai
+                              </option>
+                              <option value="Pupuk Subsidi">
+                                Pupuk Subsidi
+                              </option>
+                              <option value="Pestisida">Pestisida</option>
+                              <option value="Alat Pertanian">
+                                Alat Pertanian
+                              </option>
+                            </select>
+                            <div class="invalid-feedback">
+                              Jenis bantuan harus dipilih.
+                            </div>
+                          </div>
+
+                          <div class="col-md-6 mb-3">
+                            <label for="jumlahBantuan" class="form-label"
+                              >Jumlah Bantuan
+                              <span class="text-danger">*</span></label
+                            >
+                            <div class="input-group">
+                              <input
+                                type="number"
+                                class="form-control"
+                                id="jumlahBantuan"
+                                min="1"
+                                required
+                              />
+                              <span class="input-group-text" id="satuanBantuan"
+                                >Kg</span
+                              >
+                            </div>
+                            <div class="invalid-feedback">
+                              Jumlah bantuan harus diisi.
+                            </div>
+                          </div>
+
+                          <div class="col-12 mb-3">
+                            <label for="alasanBantuan" class="form-label"
+                              >Alasan Pengajuan
+                              <span class="text-danger">*</span></label
+                            >
+                            <textarea
+                              class="form-control"
+                              id="alasanBantuan"
+                              rows="3"
+                              required
+                            ></textarea>
+                            <div class="invalid-feedback">
+                              Alasan pengajuan harus diisi.
+                            </div>
+                          </div>
+
+                          <div class="col-12 mb-3">
+                            <label for="rencanaUsaha" class="form-label"
+                              >Rencana Usaha Tani
+                              <span class="text-danger">*</span></label
+                            >
+                            <textarea
+                              class="form-control"
+                              id="rencanaUsaha"
+                              rows="3"
+                              required
+                            ></textarea>
+                            <div class="invalid-feedback">
+                              Rencana usaha tani harus diisi.
+                            </div>
+                          </div>
+
+                          <div class="col-12">
+                            <h6
+                              class="border-start border-4 border-primary ps-3 mb-4 mt-3"
+                            >
+                              Dokumen Pendukung
+                            </h6>
+                          </div>
+
+                          <div class="col-md-6 mb-3">
+                            <label for="fotoProfil" class="form-label"
+                              >Foto Kelompok Tani
+                              <span class="text-danger">*</span></label
+                            >
+                            <input
+                              class="form-control"
+                              type="file"
+                              id="fotoProfil"
+                              accept="image/*"
+                              required
+                            />
+                            <div class="invalid-feedback">
+                              Foto kelompok tani harus diunggah.
+                            </div>
+                          </div>
+
+                          <div class="col-md-6 mb-3">
+                            <label for="fotoLahan" class="form-label"
+                              >Foto Lahan
+                              <span class="text-danger">*</span></label
+                            >
+                            <input
+                              class="form-control"
+                              type="file"
+                              id="fotoLahan"
+                              accept="image/*"
+                              required
+                            />
+                            <div class="invalid-feedback">
+                              Foto lahan harus diunggah.
+                            </div>
+                          </div>
+
+                          <div class="col-md-6 mb-3">
+                            <label for="dokumenPendukung" class="form-label"
+                              >Dokumen Pendukung Lainnya</label
+                            >
+                            <input
+                              class="form-control"
+                              type="file"
+                              id="dokumenPendukung"
+                              accept=".pdf,.doc,.docx"
+                            />
+                            <div class="form-text">
+                              Surat keterangan, bukti kepemilikan lahan, atau
+                              dokumen lainnya (format PDF, DOC, DOCX).
+                            </div>
+                          </div>
+
+                          <div class="col-md-6 mb-3">
+                            <label for="ktp" class="form-label"
+                              >KTP Ketua Kelompok
+                              <span class="text-danger">*</span></label
+                            >
+                            <input
+                              class="form-control"
+                              type="file"
+                              id="ktp"
+                              accept="image/*,.pdf"
+                              required
+                            />
+                            <div class="invalid-feedback">
+                              KTP ketua kelompok harus diunggah.
+                            </div>
+                          </div>
+
+                          <div class="col-12 mb-3">
+                            <div class="form-check">
+                              <input
+                                class="form-check-input"
+                                type="checkbox"
+                                id="pernyataan"
+                                required
+                              />
+                              <label class="form-check-label" for="pernyataan">
+                                Saya menyatakan bahwa data yang saya berikan
+                                adalah benar dan dapat dipertanggungjawabkan.
+                              </label>
+                              <div class="invalid-feedback">
+                                Anda harus menyetujui pernyataan ini.
+                              </div>
+                            </div>
+                          </div>
+
+                          <div class="col-12 text-center mt-4">
+                            <button
+                              type="submit"
+                              class="btn btn-primary btn-lg px-5"
+                            >
+                              Ajukan Bantuan
+                            </button>
+                            <button
+                              type="reset"
+                              class="btn btn-outline-secondary btn-lg ms-2"
+                            >
+                              Reset
+                            </button>
+                          </div>
+                        </div>
+                      </form>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Riwayat Pengajuan Tab -->
+                <div class="tab-pane fade" id="history-tab">
+                  <div class="card border-0 shadow-sm animation-fade-in">
+                    <div
+                      class="card-header bg-white py-3 border-0 d-flex justify-content-between align-items-center"
+                    >
+                      <h5 class="mb-0">Riwayat Pengajuan Bantuan</h5>
+                      <div class="d-flex">
+                        <div class="input-group me-2">
+                          <span class="input-group-text"
+                            ><i class="fas fa-search"></i
+                          ></span>
+                          <input
+                            type="text"
+                            class="form-control"
+                            placeholder="Cari pengajuan..."
+                            id="searchApplication"
+                          />
+                        </div>
+                        <select
+                          class="form-select"
+                          id="filterStatus"
+                          style="width: auto"
+                        >
+                          <option value="">Semua Status</option>
+                          <option value="Disetujui">Disetujui</option>
+                          <option value="Verifikasi">Verifikasi</option>
+                          <option value="Ditolak">Ditolak</option>
+                        </select>
+                      </div>
+                    </div>
+                    <div class="card-body p-0">
+                      <div class="table-responsive">
+                        <table class="table table-hover align-middle">
+                          <thead class="table-light">
+                            <tr>
+                              <th scope="col">ID Pengajuan</th>
+                              <th scope="col">Jenis Bantuan</th>
+                              <th scope="col">Tanggal Pengajuan</th>
+                              <th scope="col">Jumlah</th>
+                              <th scope="col">Status</th>
+                              <th scope="col">Aksi</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            <tr>
+                              <td>#BT-2025-001</td>
+                              <td>Bibit Padi</td>
+                              <td>20 Mei 2025</td>
+                              <td>500 Kg</td>
+                              <td>
+                                <span class="badge bg-success">Disetujui</span>
+                              </td>
+                              <td>
+                                <button
+                                  class="btn btn-sm btn-outline-primary me-1"
+                                  data-bs-toggle="modal"
+                                  data-bs-target="#detailModal"
+                                >
+                                  <i class="fas fa-eye"></i>
+                                </button>
+                                <button class="btn btn-sm btn-outline-success">
+                                  <i class="fas fa-download"></i>
+                                </button>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>#BT-2025-002</td>
+                              <td>Pupuk Subsidi</td>
+                              <td>15 Mei 2025</td>
+                              <td>200 Kg</td>
+                              <td>
+                                <span class="badge bg-warning text-dark"
+                                  >Verifikasi</span
+                                >
+                              </td>
+                              <td>
+                                <button
+                                  class="btn btn-sm btn-outline-primary me-1"
+                                  data-bs-toggle="modal"
+                                  data-bs-target="#detailModal"
+                                >
+                                  <i class="fas fa-eye"></i>
+                                </button>
+                                <button
+                                  class="btn btn-sm btn-outline-danger"
+                                  data-bs-toggle="modal"
+                                  data-bs-target="#cancelModal"
+                                >
+                                  <i class="fas fa-times"></i>
+                                </button>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>#BT-2025-003</td>
+                              <td>Pestisida</td>
+                              <td>10 Mei 2025</td>
+                              <td>50 Liter</td>
+                              <td>
+                                <span class="badge bg-success">Disetujui</span>
+                              </td>
+                              <td>
+                                <button
+                                  class="btn btn-sm btn-outline-primary me-1"
+                                  data-bs-toggle="modal"
+                                  data-bs-target="#detailModal"
+                                >
+                                  <i class="fas fa-eye"></i>
+                                </button>
+                                <button class="btn btn-sm btn-outline-success">
+                                  <i class="fas fa-download"></i>
+                                </button>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>#BT-2025-004</td>
+                              <td>Bibit Jagung</td>
+                              <td>05 Mei 2025</td>
+                              <td>300 Kg</td>
+                              <td>
+                                <span class="badge bg-warning text-dark"
+                                  >Verifikasi</span
+                                >
+                              </td>
+                              <td>
+                                <button
+                                  class="btn btn-sm btn-outline-primary me-1"
+                                  data-bs-toggle="modal"
+                                  data-bs-target="#detailModal"
+                                >
+                                  <i class="fas fa-eye"></i>
+                                </button>
+                                <button
+                                  class="btn btn-sm btn-outline-danger"
+                                  data-bs-toggle="modal"
+                                  data-bs-target="#cancelModal"
+                                >
+                                  <i class="fas fa-times"></i>
+                                </button>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>#BT-2025-005</td>
+                              <td>Alat Pertanian</td>
+                              <td>01 Mei 2025</td>
+                              <td>10 Unit</td>
+                              <td>
+                                <span class="badge bg-success">Disetujui</span>
+                              </td>
+                              <td>
+                                <button
+                                  class="btn btn-sm btn-outline-primary me-1"
+                                  data-bs-toggle="modal"
+                                  data-bs-target="#detailModal"
+                                >
+                                  <i class="fas fa-eye"></i>
+                                </button>
+                                <button class="btn btn-sm btn-outline-success">
+                                  <i class="fas fa-download"></i>
+                                </button>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </div>
+                    <div class="card-footer bg-white py-3">
+                      <nav aria-label="Page navigation">
+                        <ul class="pagination justify-content-center mb-0">
+                          <li class="page-item disabled">
+                            <a
+                              class="page-link"
+                              href="#"
+                              tabindex="-1"
+                              aria-disabled="true"
+                              >Sebelumnya</a
+                            >
+                          </li>
+                          <li class="page-item active">
+                            <a class="page-link" href="#">1</a>
+                          </li>
+                          <li class="page-item">
+                            <a class="page-link" href="#">2</a>
+                          </li>
+                          <li class="page-item">
+                            <a class="page-link" href="#">3</a>
+                          </li>
+                          <li class="page-item">
+                            <a class="page-link" href="#">Selanjutnya</a>
+                          </li>
+                        </ul>
+                      </nav>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Detail Modal -->
+        <div
+          class="modal fade"
+          id="detailModal"
+          tabindex="-1"
+          aria-labelledby="detailModalLabel"
+          aria-hidden="true"
+        >
+          <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="detailModalLabel">
+                  Detail Pengajuan #BT-2025-001
+                </h5>
+                <button
+                  type="button"
+                  class="btn-close"
+                  data-bs-dismiss="modal"
+                  aria-label="Close"
+                ></button>
+              </div>
+              <div class="modal-body">
+                <div class="row g-3">
+                  <div class="col-md-6">
+                    <div class="mb-3">
+                      <h6 class="fw-bold">Informasi Pengajuan</h6>
+                      <table class="table table-sm table-borderless">
+                        <tr>
+                          <td width="40%">ID Pengajuan</td>
+                          <td width="60%"><strong>#BT-2025-001</strong></td>
+                        </tr>
+                        <tr>
+                          <td>Tanggal Pengajuan</td>
+                          <td>20 Mei 2025</td>
+                        </tr>
+                        <tr>
+                          <td>Status</td>
+                          <td>
+                            <span class="badge bg-success">Disetujui</span>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td>Jenis Bantuan</td>
+                          <td>Bibit Padi</td>
+                        </tr>
+                        <tr>
+                          <td>Jumlah</td>
+                          <td>500 Kg</td>
+                        </tr>
+                      </table>
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="mb-3">
+                      <h6 class="fw-bold">Informasi Kelompok Tani</h6>
+                      <table class="table table-sm table-borderless">
+                        <tr>
+                          <td width="40%">Nama Kelompok</td>
+                          <td width="60%">Kelompok Tani Makmur</td>
+                        </tr>
+                        <tr>
+                          <td>Nomor Registrasi</td>
+                          <td>KT-2025-001</td>
+                        </tr>
+                        <tr>
+                          <td>Ketua</td>
+                          <td>Budi Santoso</td>
+                        </tr>
+                        <tr>
+                          <td>Alamat</td>
+                          <td>Desa Makmur, Kec. Gantarang</td>
+                        </tr>
+                      </table>
+                    </div>
+                  </div>
+                  <div class="col-12">
+                    <div class="mb-3">
+                      <h6 class="fw-bold">Informasi Lahan</h6>
+                      <table class="table table-sm table-borderless">
+                        <tr>
+                          <td width="20%">Luas Lahan</td>
+                          <td width="30%">5 Hektar</td>
+                          <td width="20%">Status Kepemilikan</td>
+                          <td width="30%">Milik Sendiri</td>
+                        </tr>
+                        <tr>
+                          <td>Lokasi Lahan</td>
+                          <td>Desa Makmur</td>
+                          <td>Kondisi Lahan</td>
+                          <td>Sawah Irigasi</td>
+                        </tr>
+                      </table>
+                    </div>
+                  </div>
+                  <div class="col-12">
+                    <div class="mb-3">
+                      <h6 class="fw-bold">Alasan Pengajuan</h6>
+                      <p>
+                        Untuk meningkatkan produktivitas padi pada musim tanam
+                        tahun ini. Bibit yang diajukan adalah bibit unggul yang
+                        tahan hama dan penyakit.
+                      </p>
+                    </div>
+                  </div>
+                  <div class="col-12">
+                    <div class="mb-3">
+                      <h6 class="fw-bold">Rencana Usaha Tani</h6>
+                      <p>
+                        Penanaman akan dilakukan pada awal bulan Juli 2025
+                        dengan perkiraan panen pada bulan Oktober 2025. Target
+                        produksi adalah 6 ton per hektar.
+                      </p>
+                    </div>
+                  </div>
+                  <div class="col-12">
+                    <div class="mb-3">
+                      <h6 class="fw-bold">Dokumen Pendukung</h6>
+                      <div class="row">
+                        <div class="col-md-3 mb-2">
+                          <div class="card">
+                            <img
+                              src="../assets/img/placeholder-lahan.jpg"
+                              class="card-img-top"
+                              alt="Foto Lahan"
+                            />
+                            <div class="card-body p-2 text-center">
+                              <p class="card-text small mb-0">Foto Lahan</p>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="col-md-3 mb-2">
+                          <div class="card">
+                            <img
+                              src="../assets/img/placeholder-kelompok.jpg"
+                              class="card-img-top"
+                              alt="Foto Kelompok"
+                            />
+                            <div class="card-body p-2 text-center">
+                              <p class="card-text small mb-0">Foto Kelompok</p>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="col-md-3 mb-2">
+                          <div class="card">
+                            <div class="card-body p-2 text-center">
+                              <i
+                                class="fas fa-file-pdf fa-3x text-danger mb-2"
+                              ></i>
+                              <p class="card-text small mb-0">KTP Ketua</p>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="col-md-3 mb-2">
+                          <div class="card">
+                            <div class="card-body p-2 text-center">
+                              <i
+                                class="fas fa-file-word fa-3x text-primary mb-2"
+                              ></i>
+                              <p class="card-text small mb-0">
+                                Dokumen Pendukung
+                              </p>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="modal-footer">
+                <button
+                  type="button"
+                  class="btn btn-secondary"
+                  data-bs-dismiss="modal"
+                >
+                  Tutup
+                </button>
+                <button type="button" class="btn btn-success">
+                  <i class="fas fa-download me-2"></i> Unduh SK
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Cancel Modal -->
+        <div
+          class="modal fade"
+          id="cancelModal"
+          tabindex="-1"
+          aria-labelledby="cancelModalLabel"
+          aria-hidden="true"
+        >
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="cancelModalLabel">
+                  Batalkan Pengajuan
+                </h5>
+                <button
+                  type="button"
+                  class="btn-close"
+                  data-bs-dismiss="modal"
+                  aria-label="Close"
+                ></button>
+              </div>
+              <div class="modal-body">
+                <p>
+                  Apakah Anda yakin ingin membatalkan pengajuan bantuan
+                  #BT-2025-002?
+                </p>
+                <p class="text-danger">
+                  <strong>Perhatian:</strong> Tindakan ini tidak dapat
+                  dibatalkan.
+                </p>
+              </div>
+              <div class="modal-footer">
+                <button
+                  type="button"
+                  class="btn btn-secondary"
+                  data-bs-dismiss="modal"
+                >
+                  Batal
+                </button>
+                <button type="button" class="btn btn-danger">
+                  Ya, Batalkan Pengajuan
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Footer -->
+        <footer class="bg-white border-top py-3 px-4">
+          <div class="container-fluid">
+            <div class="row">
+              <div class="col-md-6">
+                <p class="mb-md-0 text-muted">
+                  © 2025 Dinas Pertanian Kabupaten Bulukumba
+                </p>
+              </div>
+              <div class="col-md-6 text-md-end">
+                <a href="#" class="text-decoration-none text-muted me-3"
+                  >Bantuan</a
+                >
+                <a href="#" class="text-decoration-none text-muted me-3"
+                  >Kebijakan Privasi</a
+                >
+                <a href="#" class="text-decoration-none text-muted"
+                  >Syarat & Ketentuan</a
+                >
+              </div>
+            </div>
+          </div>
+        </footer>
+      </div>
+    </div>
+
+    <!-- Bootstrap Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Custom JS -->
+    <script src="../assets/js/main.js"></script>
+    <script src="../assets/js/pengajuan.js"></script>
+  </body>
+</html>

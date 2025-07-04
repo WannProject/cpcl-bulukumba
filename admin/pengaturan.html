@@ -1,0 +1,1207 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Pengaturan - CPCL Dinas Pertanian</title>
+    <!-- Bootstrap CSS -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <!-- Font Awesome -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <!-- Google Fonts -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="../assets/css/style.css" />
+    <link rel="stylesheet" href="../assets/css/dashboard.css" />
+  </head>
+  <body>
+    <div class="d-flex" id="wrapper">
+      <!-- Sidebar -->
+      <div class="bg-white border-end" id="sidebar-wrapper">
+        <div class="sidebar-heading text-center py-4 border-bottom">
+          <img
+            src="../assets/img/logo.svg"
+            alt="Logo"
+            height="50"
+            class="mb-2"
+          />
+          <div class="fs-5 fw-semibold">CPCL Pertanian</div>
+          <div class="small text-muted">Admin</div>
+        </div>
+        <div class="list-group list-group-flush sidebar-nav">
+          <a
+            href="dashboard.html"
+            class="list-group-item list-group-item-action py-3"
+          >
+            <i class="fas fa-tachometer-alt me-2"></i> Dashboard
+          </a>
+          <a
+            href="pengajuan.html"
+            class="list-group-item list-group-item-action py-3"
+          >
+            <i class="fas fa-file-alt me-2"></i> Pengajuan Bantuan
+          </a>
+          <a
+            href="kelompok-tani.html"
+            class="list-group-item list-group-item-action py-3"
+          >
+            <i class="fas fa-users me-2"></i> Kelompok Tani
+          </a>
+          <a
+            href="laporan.html"
+            class="list-group-item list-group-item-action py-3"
+          >
+            <i class="fas fa-chart-bar me-2"></i> Laporan
+          </a>
+          <a
+            href="pengaturan.html"
+            class="list-group-item list-group-item-action active py-3"
+          >
+            <i class="fas fa-cog me-2"></i> Pengaturan
+          </a>
+        </div>
+        <div class="mt-auto border-top p-3">
+          <a href="../login.html" class="btn btn-outline-danger d-block">
+            <i class="fas fa-sign-out-alt me-2"></i> Keluar
+          </a>
+        </div>
+      </div>
+
+      <!-- Page Content -->
+      <div id="page-content-wrapper">
+        <!-- Top navigation -->
+        <nav
+          class="navbar navbar-expand-lg navbar-light bg-white border-bottom py-3"
+        >
+          <div class="container-fluid">
+            <button class="btn" id="sidebarToggle">
+              <i class="fas fa-bars"></i>
+            </button>
+            <div class="d-none d-md-block ms-2">
+              <h5 class="mb-0">Pengaturan Sistem</h5>
+            </div>
+            <div class="ms-auto d-flex align-items-center">
+              <div class="dropdown me-3">
+                <a
+                  class="nav-link dropdown-toggle"
+                  href="#"
+                  role="button"
+                  id="notificationDropdown"
+                  data-bs-toggle="dropdown"
+                  aria-expanded="false"
+                >
+                  <i class="fas fa-bell position-relative">
+                    <span
+                      class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger"
+                      >5</span
+                    >
+                  </i>
+                </a>
+                <ul
+                  class="dropdown-menu dropdown-menu-end shadow-sm"
+                  aria-labelledby="notificationDropdown"
+                >
+                  <li><h6 class="dropdown-header">Notifikasi</h6></li>
+                  <li><hr class="dropdown-divider" /></li>
+                  <li>
+                    <a class="dropdown-item" href="#">Pengajuan bantuan baru</a>
+                  </li>
+                  <li>
+                    <a class="dropdown-item" href="#"
+                      >Persetujuan dari Kepala Dinas</a
+                    >
+                  </li>
+                  <li>
+                    <a class="dropdown-item" href="#"
+                      >Pendaftaran kelompok tani baru</a
+                    >
+                  </li>
+                  <li>
+                    <a class="dropdown-item" href="#"
+                      >Pengajuan menunggu verifikasi</a
+                    >
+                  </li>
+                  <li>
+                    <a class="dropdown-item" href="#">Pengajuan disetujui</a>
+                  </li>
+                </ul>
+              </div>
+              <div
+                class="avatar-sm bg-primary rounded-circle text-white me-2 d-flex align-items-center justify-content-center"
+              >
+                AD
+              </div>
+              <span class="d-none d-md-block">Admin Dinas</span>
+            </div>
+          </div>
+        </nav>
+
+        <!-- Main content -->
+        <div class="container-fluid p-4">
+          <div class="row">
+            <!-- Menu Pengaturan -->
+            <div class="col-md-3 mb-4">
+              <div class="card border-0 shadow-sm">
+                <div class="card-body p-0">
+                  <div class="list-group list-group-flush">
+                    <a
+                      href="#manajemen-konten"
+                      class="list-group-item list-group-item-action py-3"
+                      data-bs-toggle="tab"
+                    >
+                      <i class="fas fa-user-cog me-2"></i> Manajemen Konten
+                    </a>
+                    <a
+                      href="#pengaturan-akun"
+                      class="list-group-item list-group-item-action active py-3"
+                      data-bs-toggle="tab"
+                    >
+                      <i class="fas fa-user-cog me-2"></i> Pengaturan Akun
+                    </a>
+                    <a
+                      href="#manajemen-user"
+                      class="list-group-item list-group-item-action py-3"
+                      data-bs-toggle="tab"
+                    >
+                      <i class="fas fa-users-cog me-2"></i> Manajemen User
+                    </a>
+                    <a
+                      href="#pengaturan-sistem"
+                      class="list-group-item list-group-item-action py-3"
+                      data-bs-toggle="tab"
+                    >
+                      <i class="fas fa-sliders-h me-2"></i> Pengaturan Sistem
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Konten Pengaturan -->
+            <div class="col-md-9">
+              <div class="tab-content">
+                <!-- Tab Manajemen Konten -->
+                <div class="tab-pane fade" id="manajemen-konten">
+                  <div class="card border-0 shadow-sm">
+                    <div class="card-header bg-white border-0">
+                      <h5 class="mb-0">
+                        <i class="fas fa-globe me-2"></i> Manajemen Konten
+                        Website
+                      </h5>
+                    </div>
+                    <div class="card-body">
+                      <ul
+                        class="nav nav-tabs mb-4"
+                        id="contentTabs"
+                        role="tablist"
+                      >
+                        <li class="nav-item" role="presentation">
+                          <button
+                            class="nav-link active"
+                            id="hero-tab"
+                            data-bs-toggle="tab"
+                            data-bs-target="#hero-section"
+                            type="button"
+                          >
+                            Hero Section
+                          </button>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                          <button
+                            class="nav-link"
+                            id="contact-tab"
+                            data-bs-toggle="tab"
+                            data-bs-target="#contact-section"
+                            type="button"
+                          >
+                            Kontak & Footer
+                          </button>
+                        </li>
+                      </ul>
+
+                      <div class="tab-content" id="contentTabsContent">
+                        <!-- Hero Section Settings -->
+                        <div
+                          class="tab-pane fade show active"
+                          id="hero-section"
+                        >
+                          <form>
+                            <div class="row g-3 mb-4">
+                              <div class="col-md-12">
+                                <label class="form-label">Judul Utama</label>
+                                <input
+                                  type="text"
+                                  class="form-control"
+                                  value="Sistem Informasi CPCL"
+                                />
+                              </div>
+                              <div class="col-md-12">
+                                <label class="form-label">Deskripsi</label>
+                                <textarea class="form-control" rows="3">
+Calon Petani Calon Lahan untuk Bantuan Tanaman Pangan<br>Dinas Pertanian Kabupaten Bulukumba</textarea
+                                >
+                              </div>
+                              <div class="col-md-6">
+                                <label class="form-label"
+                                  >Teks Tombol Utama</label
+                                >
+                                <input
+                                  type="text"
+                                  class="form-control"
+                                  value="Daftar Kelompok Tani"
+                                />
+                              </div>
+                              <div class="col-md-6">
+                                <label class="form-label"
+                                  >Teks Tombol Sekunder</label
+                                >
+                                <input
+                                  type="text"
+                                  class="form-control"
+                                  value="Masuk"
+                                />
+                              </div>
+                              <div class="col-md-12">
+                                <label class="form-label"
+                                  >Gambar Background</label
+                                >
+                                <input type="file" class="form-control" />
+                                <small class="text-muted"
+                                  >Rekomendasi ukuran: 1920x1080 px</small
+                                >
+                              </div>
+                            </div>
+                            <div class="text-end">
+                              <button
+                                type="button"
+                                class="btn btn-outline-secondary me-2"
+                              >
+                                Reset
+                              </button>
+                              <button type="submit" class="btn btn-primary">
+                                Simpan Perubahan
+                              </button>
+                            </div>
+                          </form>
+                        </div>
+
+                        <!-- Contact & Footer Settings -->
+                        <div class="tab-pane fade" id="contact-section">
+                          <form>
+                            <h6 class="mb-3 border-bottom pb-2">
+                              Informasi Kontak
+                            </h6>
+                            <div class="row g-3 mb-4">
+                              <div class="col-md-4">
+                                <label class="form-label">Alamat Lengkap</label>
+                                <textarea class="form-control" rows="3">
+Jl. Jendral Sudirman No. 123
+Kabupaten Bulukumba
+Sulawesi Selatan 92511</textarea
+                                >
+                              </div>
+                              <div class="col-md-4">
+                                <label class="form-label">Nomor Telepon</label>
+                                <input
+                                  type="text"
+                                  class="form-control"
+                                  value="+62 413 123456"
+                                />
+                                <div class="mt-2">
+                                  <input
+                                    type="text"
+                                    class="form-control"
+                                    value="+62 812 3456 7890"
+                                  />
+                                </div>
+                              </div>
+                              <div class="col-md-4">
+                                <label class="form-label">Alamat Email</label>
+                                <input
+                                  type="email"
+                                  class="form-control"
+                                  value="info@pertanian.bulukumbakab.go.id"
+                                />
+                                <div class="mt-2">
+                                  <input
+                                    type="email"
+                                    class="form-control"
+                                    value="bantuan@pertanian.bulukumbakab.go.id"
+                                  />
+                                </div>
+                              </div>
+                            </div>
+
+                            <h6 class="mb-3 border-bottom pb-2">
+                              Pengaturan Footer
+                            </h6>
+                            <div class="row g-3 mb-4">
+                              <div class="col-md-6">
+                                <label class="form-label"
+                                  >Deskripsi Footer</label
+                                >
+                                <textarea class="form-control" rows="3">
+Sistem Informasi Calon Petani Calon Lahan untuk Bantuan Tanaman Pangan Kabupaten Bulukumba.</textarea
+                                >
+                              </div>
+                              <div class="col-md-6">
+                                <label class="form-label"
+                                  >Tautan Media Sosial</label
+                                >
+                                <div class="input-group mb-2">
+                                  <span class="input-group-text"
+                                    ><i class="fab fa-facebook-f"></i
+                                  ></span>
+                                  <input
+                                    type="url"
+                                    class="form-control"
+                                    placeholder="URL Facebook"
+                                  />
+                                </div>
+                                <div class="input-group mb-2">
+                                  <span class="input-group-text"
+                                    ><i class="fab fa-twitter"></i
+                                  ></span>
+                                  <input
+                                    type="url"
+                                    class="form-control"
+                                    placeholder="URL Twitter"
+                                  />
+                                </div>
+                                <div class="input-group mb-2">
+                                  <span class="input-group-text"
+                                    ><i class="fab fa-instagram"></i
+                                  ></span>
+                                  <input
+                                    type="url"
+                                    class="form-control"
+                                    placeholder="URL Instagram"
+                                  />
+                                </div>
+                                <div class="input-group">
+                                  <span class="input-group-text"
+                                    ><i class="fab fa-youtube"></i
+                                  ></span>
+                                  <input
+                                    type="url"
+                                    class="form-control"
+                                    placeholder="URL YouTube"
+                                  />
+                                </div>
+                              </div>
+                            </div>
+
+                            <div class="text-end">
+                              <button
+                                type="button"
+                                class="btn btn-outline-secondary me-2"
+                              >
+                                Reset
+                              </button>
+                              <button type="submit" class="btn btn-primary">
+                                Simpan Perubahan
+                              </button>
+                            </div>
+                          </form>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Tab Pengaturan Akun -->
+                <div class="tab-pane fade show active" id="pengaturan-akun">
+                  <div class="card border-0 shadow-sm">
+                    <div class="card-header bg-white border-0">
+                      <h5 class="mb-0">
+                        <i class="fas fa-user-cog me-2"></i> Pengaturan Akun
+                      </h5>
+                    </div>
+                    <div class="card-body">
+                      <form>
+                        <div class="row mb-4">
+                          <div class="col-md-3 text-center">
+                            <div
+                              class="avatar-xxl mb-3 position-relative d-inline-block"
+                            >
+                              <img
+                                src="../assets/img/avatar-admin.jpg"
+                                class="rounded-circle border"
+                                width="120"
+                                height="120"
+                                alt="Foto Profil"
+                              />
+                              <button
+                                type="button"
+                                class="btn btn-sm btn-primary rounded-circle position-absolute bottom-0 end-0"
+                              >
+                                <i class="fas fa-camera"></i>
+                              </button>
+                            </div>
+                            <button
+                              type="button"
+                              class="btn btn-outline-secondary btn-sm"
+                            >
+                              Ubah Foto
+                            </button>
+                          </div>
+                          <div class="col-md-9">
+                            <div class="row g-3">
+                              <div class="col-md-6">
+                                <label class="form-label">Nama Lengkap</label>
+                                <input
+                                  type="text"
+                                  class="form-control"
+                                  value="Admin Dinas"
+                                />
+                              </div>
+                              <div class="col-md-6">
+                                <label class="form-label">Email</label>
+                                <input
+                                  type="email"
+                                  class="form-control"
+                                  value="admin@dinaspertanian.go.id"
+                                />
+                              </div>
+                              <div class="col-md-6">
+                                <label class="form-label">Username</label>
+                                <input
+                                  type="text"
+                                  class="form-control"
+                                  value="admin_dinas"
+                                />
+                              </div>
+                              <div class="col-md-6">
+                                <label class="form-label">Nomor HP</label>
+                                <input
+                                  type="tel"
+                                  class="form-control"
+                                  value="081234567890"
+                                />
+                              </div>
+                              <div class="col-md-6">
+                                <label class="form-label">Role</label>
+                                <input
+                                  type="text"
+                                  class="form-control"
+                                  value="Administrator"
+                                  disabled
+                                />
+                              </div>
+                              <div class="col-md-6">
+                                <label class="form-label">Terdaftar Pada</label>
+                                <input
+                                  type="text"
+                                  class="form-control"
+                                  value="15 Januari 2025"
+                                  disabled
+                                />
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+
+                        <h6 class="mb-3 border-bottom pb-2">Ubah Password</h6>
+                        <div class="row g-3">
+                          <div class="col-md-4">
+                            <label class="form-label">Password Saat Ini</label>
+                            <div class="input-group">
+                              <input
+                                type="password"
+                                class="form-control"
+                                placeholder="Masukkan password saat ini"
+                              />
+                              <button
+                                class="btn btn-outline-secondary"
+                                type="button"
+                              >
+                                <i class="fas fa-eye"></i>
+                              </button>
+                            </div>
+                          </div>
+                          <div class="col-md-4">
+                            <label class="form-label">Password Baru</label>
+                            <div class="input-group">
+                              <input
+                                type="password"
+                                class="form-control"
+                                placeholder="Masukkan password baru"
+                              />
+                              <button
+                                class="btn btn-outline-secondary"
+                                type="button"
+                              >
+                                <i class="fas fa-eye"></i>
+                              </button>
+                            </div>
+                          </div>
+                          <div class="col-md-4">
+                            <label class="form-label"
+                              >Konfirmasi Password</label
+                            >
+                            <div class="input-group">
+                              <input
+                                type="password"
+                                class="form-control"
+                                placeholder="Konfirmasi password baru"
+                              />
+                              <button
+                                class="btn btn-outline-secondary"
+                                type="button"
+                              >
+                                <i class="fas fa-eye"></i>
+                              </button>
+                            </div>
+                          </div>
+                        </div>
+
+                        <div class="mt-4 text-end">
+                          <button
+                            type="button"
+                            class="btn btn-outline-secondary me-2"
+                          >
+                            Batal
+                          </button>
+                          <button type="submit" class="btn btn-primary">
+                            Simpan Perubahan
+                          </button>
+                        </div>
+                      </form>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Tab Manajemen User -->
+                <div class="tab-pane fade" id="manajemen-user">
+                  <div class="card border-0 shadow-sm">
+                    <div
+                      class="card-header bg-white border-0 d-flex justify-content-between align-items-center"
+                    >
+                      <h5 class="mb-0">
+                        <i class="fas fa-users-cog me-2"></i> Manajemen User
+                      </h5>
+                      <button
+                        class="btn btn-primary btn-sm"
+                        data-bs-toggle="modal"
+                        data-bs-target="#tambahUserModal"
+                      >
+                        <i class="fas fa-plus me-1"></i> Tambah User
+                      </button>
+                    </div>
+                    <div class="card-body">
+                      <div class="table-responsive">
+                        <table class="table table-hover align-middle">
+                          <thead class="table-light">
+                            <tr>
+                              <th width="5%">#</th>
+                              <th width="20%">Nama</th>
+                              <th width="15%">Username</th>
+                              <th width="20%">Email</th>
+                              <th width="15%">Role</th>
+                              <th width="15%">Status</th>
+                              <th width="10%">Aksi</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            <tr>
+                              <td>1</td>
+                              <td>
+                                <div class="d-flex align-items-center">
+                                  <img
+                                    src="../assets/img/avatar-kadis.jpg"
+                                    alt="User"
+                                    class="rounded-circle me-2"
+                                    width="40"
+                                    height="40"
+                                  />
+                                  <div>
+                                    <div class="fw-bold">
+                                      Dr. Ir. H. Ahmad Yani
+                                    </div>
+                                    <div class="small text-muted">
+                                      Kepala Dinas
+                                    </div>
+                                  </div>
+                                </div>
+                              </td>
+                              <td>kadis_pertanian</td>
+                              <td>kadis@dinaspertanian.go.id</td>
+                              <td>Kepala Dinas</td>
+                              <td>
+                                <span class="badge bg-success">Aktif</span>
+                              </td>
+                              <td>
+                                <div class="btn-group btn-group-sm">
+                                  <button
+                                    type="button"
+                                    class="btn btn-outline-primary"
+                                    data-bs-toggle="modal"
+                                    data-bs-target="#editUserModal"
+                                  >
+                                    <i class="fas fa-edit"></i>
+                                  </button>
+                                  <button
+                                    type="button"
+                                    class="btn btn-outline-danger"
+                                  >
+                                    <i class="fas fa-trash-alt"></i>
+                                  </button>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>2</td>
+                              <td>
+                                <div class="d-flex align-items-center">
+                                  <img
+                                    src="../assets/img/avatar-verifikator.jpg"
+                                    alt="User"
+                                    class="rounded-circle me-2"
+                                    width="40"
+                                    height="40"
+                                  />
+                                  <div>
+                                    <div class="fw-bold">Budi Santoso, SP</div>
+                                    <div class="small text-muted">
+                                      Verifikator
+                                    </div>
+                                  </div>
+                                </div>
+                              </td>
+                              <td>budi_santoso</td>
+                              <td>budi@dinaspertanian.go.id</td>
+                              <td>Verifikator</td>
+                              <td>
+                                <span class="badge bg-success">Aktif</span>
+                              </td>
+                              <td>
+                                <div class="btn-group btn-group-sm">
+                                  <button
+                                    type="button"
+                                    class="btn btn-outline-primary"
+                                    data-bs-toggle="modal"
+                                    data-bs-target="#editUserModal"
+                                  >
+                                    <i class="fas fa-edit"></i>
+                                  </button>
+                                  <button
+                                    type="button"
+                                    class="btn btn-outline-danger"
+                                  >
+                                    <i class="fas fa-trash-alt"></i>
+                                  </button>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>3</td>
+                              <td>
+                                <div class="d-flex align-items-center">
+                                  <img
+                                    src="../assets/img/avatar-verifikator2.jpg"
+                                    alt="User"
+                                    class="rounded-circle me-2"
+                                    width="40"
+                                    height="40"
+                                  />
+                                  <div>
+                                    <div class="fw-bold">Ani Wijaya, SP</div>
+                                    <div class="small text-muted">
+                                      Verifikator
+                                    </div>
+                                  </div>
+                                </div>
+                              </td>
+                              <td>ani_wijaya</td>
+                              <td>ani@dinaspertanian.go.id</td>
+                              <td>Verifikator</td>
+                              <td>
+                                <span class="badge bg-success">Aktif</span>
+                              </td>
+                              <td>
+                                <div class="btn-group btn-group-sm">
+                                  <button
+                                    type="button"
+                                    class="btn btn-outline-primary"
+                                    data-bs-toggle="modal"
+                                    data-bs-target="#editUserModal"
+                                  >
+                                    <i class="fas fa-edit"></i>
+                                  </button>
+                                  <button
+                                    type="button"
+                                    class="btn btn-outline-danger"
+                                  >
+                                    <i class="fas fa-trash-alt"></i>
+                                  </button>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>4</td>
+                              <td>
+                                <div class="d-flex align-items-center">
+                                  <img
+                                    src="../assets/img/avatar-operator.jpg"
+                                    alt="User"
+                                    class="rounded-circle me-2"
+                                    width="40"
+                                    height="40"
+                                  />
+                                  <div>
+                                    <div class="fw-bold">Citra Dewi</div>
+                                    <div class="small text-muted">Operator</div>
+                                  </div>
+                                </div>
+                              </td>
+                              <td>citra_dewi</td>
+                              <td>citra@dinaspertanian.go.id</td>
+                              <td>Operator</td>
+                              <td>
+                                <span class="badge bg-warning text-dark"
+                                  >Nonaktif</span
+                                >
+                              </td>
+                              <td>
+                                <div class="btn-group btn-group-sm">
+                                  <button
+                                    type="button"
+                                    class="btn btn-outline-primary"
+                                    data-bs-toggle="modal"
+                                    data-bs-target="#editUserModal"
+                                  >
+                                    <i class="fas fa-edit"></i>
+                                  </button>
+                                  <button
+                                    type="button"
+                                    class="btn btn-outline-danger"
+                                  >
+                                    <i class="fas fa-trash-alt"></i>
+                                  </button>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+
+                      <nav aria-label="Page navigation" class="mt-3">
+                        <ul class="pagination justify-content-center mb-0">
+                          <li class="page-item disabled">
+                            <a class="page-link" href="#" tabindex="-1"
+                              >Previous</a
+                            >
+                          </li>
+                          <li class="page-item active">
+                            <a class="page-link" href="#">1</a>
+                          </li>
+                          <li class="page-item">
+                            <a class="page-link" href="#">2</a>
+                          </li>
+                          <li class="page-item">
+                            <a class="page-link" href="#">3</a>
+                          </li>
+                          <li class="page-item">
+                            <a class="page-link" href="#">Next</a>
+                          </li>
+                        </ul>
+                      </nav>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Tab Pengaturan Sistem -->
+                <div class="tab-pane fade" id="pengaturan-sistem">
+                  <div class="card border-0 shadow-sm">
+                    <div class="card-header bg-white border-0">
+                      <h5 class="mb-0">
+                        <i class="fas fa-sliders-h me-2"></i> Pengaturan Sistem
+                      </h5>
+                    </div>
+                    <div class="card-body">
+                      <form>
+                        <h6 class="mb-3 border-bottom pb-2">Pengaturan Umum</h6>
+                        <div class="row g-3 mb-4">
+                          <div class="col-md-6">
+                            <label class="form-label">Nama Aplikasi</label>
+                            <input
+                              type="text"
+                              class="form-control"
+                              value="CPCL Dinas Pertanian"
+                            />
+                          </div>
+                          <div class="col-md-6">
+                            <label class="form-label">Logo Aplikasi</label>
+                            <input type="file" class="form-control" />
+                          </div>
+                          <div class="col-md-6">
+                            <label class="form-label">Nama Instansi</label>
+                            <input
+                              type="text"
+                              class="form-control"
+                              value="Dinas Pertanian Kabupaten Bulukumba"
+                            />
+                          </div>
+                          <div class="col-md-6">
+                            <label class="form-label">Alamat Instansi</label>
+                            <input
+                              type="text"
+                              class="form-control"
+                              value="Jl. Jenderal Sudirman No. 10, Bulukumba"
+                            />
+                          </div>
+                        </div>
+
+                        <h6 class="mb-3 border-bottom pb-2">
+                          Pengaturan Keamanan
+                        </h6>
+                        <div class="row g-3 mb-4">
+                          <div class="col-md-6">
+                            <div class="form-check form-switch">
+                              <input
+                                class="form-check-input"
+                                type="checkbox"
+                                id="forcePassword"
+                                checked
+                              />
+                              <label
+                                class="form-check-label"
+                                for="forcePassword"
+                                >Wajib Ganti Password Pertama Login</label
+                              >
+                            </div>
+                          </div>
+                          <div class="col-md-6">
+                            <div class="form-check form-switch">
+                              <input
+                                class="form-check-input"
+                                type="checkbox"
+                                id="twoFactorAuth"
+                              />
+                              <label
+                                class="form-check-label"
+                                for="twoFactorAuth"
+                                >Autentikasi Dua Faktor</label
+                              >
+                            </div>
+                          </div>
+                          <div class="col-md-6">
+                            <label class="form-label"
+                              >Masa Aktif Password (hari)</label
+                            >
+                            <input
+                              type="number"
+                              class="form-control"
+                              value="90"
+                            />
+                          </div>
+                          <div class="col-md-6">
+                            <label class="form-label"
+                              >Batas Percobaan Login</label
+                            >
+                            <input
+                              type="number"
+                              class="form-control"
+                              value="5"
+                            />
+                          </div>
+                        </div>
+
+                        <div class="mt-4 text-end">
+                          <button
+                            type="button"
+                            class="btn btn-outline-secondary me-2"
+                          >
+                            Reset
+                          </button>
+                          <button type="submit" class="btn btn-primary">
+                            Simpan Pengaturan
+                          </button>
+                        </div>
+                      </form>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Footer -->
+        <footer class="bg-white border-top py-3 px-4">
+          <div class="container-fluid">
+            <div class="row">
+              <div class="col-md-6">
+                <p class="mb-md-0 text-muted">
+                  © 2025 Dinas Pertanian Kabupaten Bulukumba
+                </p>
+              </div>
+              <div class="col-md-6 text-md-end">
+                <a href="#" class="text-decoration-none text-muted me-3"
+                  >Bantuan</a
+                >
+                <a href="#" class="text-decoration-none text-muted me-3"
+                  >Kebijakan Privasi</a
+                >
+                <a href="#" class="text-decoration-none text-muted"
+                  >Syarat & Ketentuan</a
+                >
+              </div>
+            </div>
+          </div>
+        </footer>
+      </div>
+    </div>
+
+    <!-- Modal Tambah User -->
+    <div class="modal fade" id="tambahUserModal" tabindex="-1">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">Tambah User Baru</h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+            ></button>
+          </div>
+          <div class="modal-body">
+            <form>
+              <div class="mb-3">
+                <label class="form-label">Nama Lengkap</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  placeholder="Masukkan nama lengkap"
+                  required
+                />
+              </div>
+              <div class="mb-3">
+                <label class="form-label">Username</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  placeholder="Masukkan username"
+                  required
+                />
+              </div>
+              <div class="mb-3">
+                <label class="form-label">Email</label>
+                <input
+                  type="email"
+                  class="form-control"
+                  placeholder="Masukkan email"
+                  required
+                />
+              </div>
+              <div class="mb-3">
+                <label class="form-label">Role</label>
+                <select class="form-select" required>
+                  <option value="">Pilih Role</option>
+                  <option>Administrator</option>
+                  <option>Kepala Dinas</option>
+                  <option>Verifikator</option>
+                  <option>Operator</option>
+                </select>
+              </div>
+              <div class="mb-3">
+                <label class="form-label">Password</label>
+                <div class="input-group">
+                  <input
+                    type="password"
+                    class="form-control"
+                    placeholder="Masukkan password"
+                    required
+                  />
+                  <button class="btn btn-outline-secondary" type="button">
+                    <i class="fas fa-eye"></i>
+                  </button>
+                </div>
+                <div class="form-text">
+                  Minimal 8 karakter, kombinasi huruf dan angka
+                </div>
+              </div>
+              <div class="mb-3">
+                <label class="form-label">Konfirmasi Password</label>
+                <div class="input-group">
+                  <input
+                    type="password"
+                    class="form-control"
+                    placeholder="Konfirmasi password"
+                    required
+                  />
+                  <button class="btn btn-outline-secondary" type="button">
+                    <i class="fas fa-eye"></i>
+                  </button>
+                </div>
+              </div>
+              <div class="mb-3">
+                <div class="form-check">
+                  <input
+                    class="form-check-input"
+                    type="checkbox"
+                    id="sendEmail"
+                    checked
+                  />
+                  <label class="form-check-label" for="sendEmail"
+                    >Kirim email notifikasi ke user</label
+                  >
+                </div>
+              </div>
+            </form>
+          </div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-outline-secondary"
+              data-bs-dismiss="modal"
+            >
+              Batal
+            </button>
+            <button type="button" class="btn btn-primary">Simpan</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Modal Edit User -->
+    <div class="modal fade" id="editUserModal" tabindex="-1">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">Edit User</h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+            ></button>
+          </div>
+          <div class="modal-body">
+            <form>
+              <div class="mb-3 text-center">
+                <img
+                  src="../assets/img/avatar-kadis.jpg"
+                  class="rounded-circle mb-2"
+                  width="100"
+                  height="100"
+                  alt="Foto Profil"
+                />
+                <input
+                  type="file"
+                  class="form-control d-none"
+                  id="uploadAvatar"
+                />
+                <button
+                  type="button"
+                  class="btn btn-sm btn-outline-primary"
+                  onclick="document.getElementById('uploadAvatar').click()"
+                >
+                  <i class="fas fa-camera me-1"></i> Ubah Foto
+                </button>
+              </div>
+              <div class="mb-3">
+                <label class="form-label">Nama Lengkap</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  value="Dr. Ir. H. Ahmad Yani"
+                  required
+                />
+              </div>
+              <div class="mb-3">
+                <label class="form-label">Username</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  value="kadis_pertanian"
+                  required
+                />
+              </div>
+              <div class="mb-3">
+                <label class="form-label">Email</label>
+                <input
+                  type="email"
+                  class="form-control"
+                  value="kadis@dinaspertanian.go.id"
+                  required
+                />
+              </div>
+              <div class="mb-3">
+                <label class="form-label">Role</label>
+                <select class="form-select" required>
+                  <option>Administrator</option>
+                  <option selected>Kepala Dinas</option>
+                  <option>Verifikator</option>
+                  <option>Operator</option>
+                </select>
+              </div>
+              <div class="mb-3">
+                <label class="form-label">Status</label>
+                <select class="form-select" required>
+                  <option selected>Aktif</option>
+                  <option>Nonaktif</option>
+                </select>
+              </div>
+              <div class="mb-3">
+                <div class="form-check form-switch">
+                  <input
+                    class="form-check-input"
+                    type="checkbox"
+                    id="resetPassword"
+                  />
+                  <label class="form-check-label" for="resetPassword"
+                    >Reset Password</label
+                  >
+                </div>
+              </div>
+            </form>
+          </div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-outline-secondary"
+              data-bs-dismiss="modal"
+            >
+              Batal
+            </button>
+            <button type="button" class="btn btn-primary">
+              Simpan Perubahan
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Bootstrap Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Custom JS -->
+    <script src="../assets/js/main.js"></script>
+    <script>
+      // Toggle password visibility
+      document.querySelectorAll(".btn-outline-secondary").forEach((button) => {
+        button.addEventListener("click", function () {
+          const input = this.previousElementSibling;
+          const icon = this.querySelector("i");
+          if (input.type === "password") {
+            input.type = "text";
+            icon.classList.remove("fa-eye");
+            icon.classList.add("fa-eye-slash");
+          } else {
+            input.type = "password";
+            icon.classList.remove("fa-eye-slash");
+            icon.classList.add("fa-eye");
+          }
+        });
+      });
+    </script>
+  </body>
+</html>

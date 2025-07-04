@@ -1,0 +1,605 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Laporan - CPCL Dinas Pertanian</title>
+    <!-- Bootstrap CSS -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <!-- Font Awesome -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <!-- Google Fonts -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <!-- Chart.js -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/chart.js@4.0.0/dist/Chart.min.css"
+    />
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="../assets/css/style.css" />
+    <link rel="stylesheet" href="../assets/css/dashboard.css" />
+  </head>
+  <body>
+    <div class="d-flex" id="wrapper">
+      <!-- Sidebar -->
+      <div class="bg-white border-end" id="sidebar-wrapper">
+        <div class="sidebar-heading text-center py-4 border-bottom">
+          <img
+            src="../assets/img/logo.svg"
+            alt="Logo"
+            height="50"
+            class="mb-2"
+          />
+          <div class="fs-5 fw-semibold">CPCL Pertanian</div>
+          <div class="small text-muted">Kepala Dinas</div>
+        </div>
+        <div class="list-group list-group-flush sidebar-nav">
+          <a
+            href="dashboard.html"
+            class="list-group-item list-group-item-action py-3"
+          >
+            <i class="fas fa-tachometer-alt me-2"></i> Dashboard
+          </a>
+          <a
+            href="verifikasi.html"
+            class="list-group-item list-group-item-action py-3"
+          >
+            <i class="fas fa-check-circle me-2"></i> Verifikasi Pengajuan
+          </a>
+          <a
+            href="laporan.html"
+            class="list-group-item list-group-item-action active py-3"
+          >
+            <i class="fas fa-chart-bar me-2"></i> Laporan
+          </a>
+          <a
+            href="pengaturan.html"
+            class="list-group-item list-group-item-action py-3"
+          >
+            <i class="fas fa-cog me-2"></i> Pengaturan
+          </a>
+        </div>
+        <div class="mt-auto border-top p-3">
+          <a href="../login.html" class="btn btn-outline-danger d-block">
+            <i class="fas fa-sign-out-alt me-2"></i> Keluar
+          </a>
+        </div>
+      </div>
+
+      <!-- Page Content -->
+      <div id="page-content-wrapper">
+        <!-- Top navigation -->
+        <nav
+          class="navbar navbar-expand-lg navbar-light bg-white border-bottom py-3"
+        >
+          <div class="container-fluid">
+            <button class="btn" id="sidebarToggle">
+              <i class="fas fa-bars"></i>
+            </button>
+            <div class="d-none d-md-block ms-2">
+              <h5 class="mb-0">Laporan Program Bantuan</h5>
+            </div>
+            <div class="ms-auto d-flex align-items-center">
+              <div class="dropdown me-3">
+                <a
+                  class="nav-link dropdown-toggle"
+                  href="#"
+                  role="button"
+                  id="notificationDropdown"
+                  data-bs-toggle="dropdown"
+                  aria-expanded="false"
+                >
+                  <i class="fas fa-bell position-relative">
+                    <span
+                      class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger"
+                      >7</span
+                    >
+                  </i>
+                </a>
+                <ul
+                  class="dropdown-menu dropdown-menu-end shadow-sm"
+                  aria-labelledby="notificationDropdown"
+                >
+                  <li><h6 class="dropdown-header">Notifikasi</h6></li>
+                  <li><hr class="dropdown-divider" /></li>
+                  <li>
+                    <a class="dropdown-item" href="#"
+                      >Pengajuan menunggu persetujuan</a
+                    >
+                  </li>
+                  <li>
+                    <a class="dropdown-item" href="#"
+                      >Laporan bulanan telah tersedia</a
+                    >
+                  </li>
+                  <li>
+                    <a class="dropdown-item" href="#">Pengajuan bantuan baru</a>
+                  </li>
+                  <li>
+                    <a class="dropdown-item" href="#"
+                      >Pertemuan dengan kelompok tani</a
+                    >
+                  </li>
+                  <li>
+                    <a class="dropdown-item" href="#"
+                      >Verifikasi pengajuan selesai</a
+                    >
+                  </li>
+                  <li>
+                    <a class="dropdown-item" href="#"
+                      >Jadwal penyaluran bantuan</a
+                    >
+                  </li>
+                  <li>
+                    <a class="dropdown-item" href="#"
+                      >Evaluasi program bantuan</a
+                    >
+                  </li>
+                </ul>
+              </div>
+
+              <div
+                class="avatar-sm bg-primary rounded-circle text-white me-2 d-flex align-items-center justify-content-center"
+              >
+                KD
+              </div>
+              <span class="d-none d-md-block">Kepala Dinas</span>
+            </div>
+          </div>
+        </nav>
+
+        <!-- Main content -->
+        <div class="container-fluid p-4">
+          <!-- Filter Section -->
+          <div class="row mb-4">
+            <div class="col-12">
+              <div class="card border-0 shadow-sm">
+                <div class="card-body">
+                  <div class="row g-3">
+                    <div class="col-md-3">
+                      <label class="form-label">Periode</label>
+                      <select class="form-select">
+                        <option>Bulanan</option>
+                        <option>Triwulan</option>
+                        <option>Tahunan</option>
+                      </select>
+                    </div>
+                    <div class="col-md-3">
+                      <label class="form-label">Tahun</label>
+                      <select class="form-select">
+                        <option>2025</option>
+                        <option>2024</option>
+                        <option>2023</option>
+                      </select>
+                    </div>
+                    <div class="col-md-3">
+                      <label class="form-label">Jenis Bantuan</label>
+                      <select class="form-select">
+                        <option value="">Semua Jenis</option>
+                        <option>Bibit Padi</option>
+                        <option>Bibit Jagung</option>
+                        <option>Pupuk Subsidi</option>
+                        <option>Pestisida</option>
+                        <option>Alat Pertanian</option>
+                      </select>
+                    </div>
+                    <div class="col-md-3">
+                      <label class="form-label">Kecamatan</label>
+                      <select class="form-select">
+                        <option value="">Semua Kecamatan</option>
+                        <option>Ujung Bulu</option>
+                        <option>Gantarang</option>
+                        <option>Ujung Loe</option>
+                        <option>Bontobahari</option>
+                        <option>Bontotiro</option>
+                      </select>
+                    </div>
+                    <div class="col-12 text-end">
+                      <button class="btn btn-primary me-2">
+                        <i class="fas fa-sync-alt me-2"></i> Update
+                      </button>
+                      <button class="btn btn-success" onclick="window.print()">
+                        <i class="fas fa-print me-2"></i> Cetak Laporan
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Summary Cards -->
+          <div class="row g-4 mb-4">
+            <div class="col-md-3">
+              <div class="card border-0 shadow-sm h-100">
+                <div class="card-body">
+                  <div class="d-flex align-items-center mb-3">
+                    <div class="flex-shrink-0">
+                      <div
+                        class="avatar bg-primary-subtle text-primary rounded"
+                      >
+                        <i class="fas fa-seedling"></i>
+                      </div>
+                    </div>
+                    <div class="flex-grow-1 ms-3">
+                      <h6 class="mb-0">Total Bantuan</h6>
+                      <h3 class="fw-bold mb-0">1.250</h3>
+                      <p class="text-muted mb-0 small">Ton Bantuan</p>
+                    </div>
+                  </div>
+                  <div class="progress" style="height: 6px">
+                    <div
+                      class="progress-bar bg-primary"
+                      role="progressbar"
+                      style="width: 85%"
+                    ></div>
+                  </div>
+                  <div class="d-flex align-items-center mt-3">
+                    <span class="text-success me-2"
+                      ><i class="fas fa-arrow-up"></i> 15%</span
+                    >
+                    <span class="text-muted small"
+                      >dari periode sebelumnya</span
+                    >
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-md-3">
+              <div class="card border-0 shadow-sm h-100">
+                <div class="card-body">
+                  <div class="d-flex align-items-center mb-3">
+                    <div class="flex-shrink-0">
+                      <div
+                        class="avatar bg-success-subtle text-success rounded"
+                      >
+                        <i class="fas fa-users"></i>
+                      </div>
+                    </div>
+                    <div class="flex-grow-1 ms-3">
+                      <h6 class="mb-0">Kelompok Terbantu</h6>
+                      <h3 class="fw-bold mb-0">125</h3>
+                      <p class="text-muted mb-0 small">Kelompok Tani</p>
+                    </div>
+                  </div>
+                  <div class="progress" style="height: 6px">
+                    <div
+                      class="progress-bar bg-success"
+                      role="progressbar"
+                      style="width: 75%"
+                    ></div>
+                  </div>
+                  <div class="d-flex align-items-center mt-3">
+                    <span class="text-success me-2"
+                      ><i class="fas fa-arrow-up"></i> 12%</span
+                    >
+                    <span class="text-muted small"
+                      >dari periode sebelumnya</span
+                    >
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-md-3">
+              <div class="card border-0 shadow-sm h-100">
+                <div class="card-body">
+                  <div class="d-flex align-items-center mb-3">
+                    <div class="flex-shrink-0">
+                      <div
+                        class="avatar bg-warning-subtle text-warning rounded"
+                      >
+                        <i class="fas fa-map-marked-alt"></i>
+                      </div>
+                    </div>
+                    <div class="flex-grow-1 ms-3">
+                      <h6 class="mb-0">Area Tercover</h6>
+                      <h3 class="fw-bold mb-0">1.500</h3>
+                      <p class="text-muted mb-0 small">Hektar Lahan</p>
+                    </div>
+                  </div>
+                  <div class="progress" style="height: 6px">
+                    <div
+                      class="progress-bar bg-warning"
+                      role="progressbar"
+                      style="width: 65%"
+                    ></div>
+                  </div>
+                  <div class="d-flex align-items-center mt-3">
+                    <span class="text-success me-2"
+                      ><i class="fas fa-arrow-up"></i> 8%</span
+                    >
+                    <span class="text-muted small"
+                      >dari periode sebelumnya</span
+                    >
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-md-3">
+              <div class="card border-0 shadow-sm h-100">
+                <div class="card-body">
+                  <div class="d-flex align-items-center mb-3">
+                    <div class="flex-shrink-0">
+                      <div class="avatar bg-info-subtle text-info rounded">
+                        <i class="fas fa-money-bill-wave"></i>
+                      </div>
+                    </div>
+                    <div class="flex-grow-1 ms-3">
+                      <h6 class="mb-0">Anggaran Terpakai</h6>
+                      <h3 class="fw-bold mb-0">75%</h3>
+                      <p class="text-muted mb-0 small">Dari Total Anggaran</p>
+                    </div>
+                  </div>
+                  <div class="progress" style="height: 6px">
+                    <div
+                      class="progress-bar bg-info"
+                      role="progressbar"
+                      style="width: 75%"
+                    ></div>
+                  </div>
+                  <div class="d-flex align-items-center mt-3">
+                    <span class="text-success me-2"
+                      ><i class="fas fa-arrow-up"></i> 5%</span
+                    >
+                    <span class="text-muted small"
+                      >dari periode sebelumnya</span
+                    >
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Detailed Reports -->
+          <div class="row g-4">
+            <div class="col-lg-6">
+              <div class="card border-0 shadow-sm">
+                <div class="card-header bg-white border-0 py-3">
+                  <div
+                    class="d-flex justify-content-between align-items-center"
+                  >
+                    <h5 class="mb-0">Distribusi per Kecamatan</h5>
+                    <button class="btn btn-sm btn-outline-primary">
+                      <i class="fas fa-download me-2"></i> Unduh
+                    </button>
+                  </div>
+                </div>
+                <div class="card-body p-0">
+                  <div class="table-responsive">
+                    <table class="table table-hover">
+                      <thead class="table-light">
+                        <tr>
+                          <th>Kecamatan</th>
+                          <th>Kelompok Tani</th>
+                          <th>Total Bantuan</th>
+                          <th>Progress</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td>Gantarang</td>
+                          <td>35</td>
+                          <td>350 Ton</td>
+                          <td>
+                            <div class="d-flex align-items-center">
+                              <div
+                                class="progress flex-grow-1"
+                                style="height: 6px"
+                              >
+                                <div
+                                  class="progress-bar bg-success"
+                                  style="width: 85%"
+                                ></div>
+                              </div>
+                              <span class="ms-2">85%</span>
+                            </div>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td>Ujung Bulu</td>
+                          <td>28</td>
+                          <td>280 Ton</td>
+                          <td>
+                            <div class="d-flex align-items-center">
+                              <div
+                                class="progress flex-grow-1"
+                                style="height: 6px"
+                              >
+                                <div
+                                  class="progress-bar bg-success"
+                                  style="width: 75%"
+                                ></div>
+                              </div>
+                              <span class="ms-2">75%</span>
+                            </div>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td>Ujung Loe</td>
+                          <td>25</td>
+                          <td>250 Ton</td>
+                          <td>
+                            <div class="d-flex align-items-center">
+                              <div
+                                class="progress flex-grow-1"
+                                style="height: 6px"
+                              >
+                                <div
+                                  class="progress-bar bg-warning"
+                                  style="width: 65%"
+                                ></div>
+                              </div>
+                              <span class="ms-2">65%</span>
+                            </div>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td>Bontobahari</td>
+                          <td>20</td>
+                          <td>200 Ton</td>
+                          <td>
+                            <div class="d-flex align-items-center">
+                              <div
+                                class="progress flex-grow-1"
+                                style="height: 6px"
+                              >
+                                <div
+                                  class="progress-bar bg-warning"
+                                  style="width: 55%"
+                                ></div>
+                              </div>
+                              <span class="ms-2">55%</span>
+                            </div>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td>Bontotiro</td>
+                          <td>17</td>
+                          <td>170 Ton</td>
+                          <td>
+                            <div class="d-flex align-items-center">
+                              <div
+                                class="progress flex-grow-1"
+                                style="height: 6px"
+                              >
+                                <div
+                                  class="progress-bar bg-danger"
+                                  style="width: 45%"
+                                ></div>
+                              </div>
+                              <span class="ms-2">45%</span>
+                            </div>
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-lg-6">
+              <div class="card border-0 shadow-sm">
+                <div class="card-header bg-white border-0 py-3">
+                  <div
+                    class="d-flex justify-content-between align-items-center"
+                  >
+                    <h5 class="mb-0">Status Pengajuan</h5>
+                    <button class="btn btn-sm btn-outline-primary">
+                      <i class="fas fa-download me-2"></i> Unduh
+                    </button>
+                  </div>
+                </div>
+                <div class="card-body p-0">
+                  <div class="table-responsive">
+                    <table class="table table-hover">
+                      <thead class="table-light">
+                        <tr>
+                          <th>Status</th>
+                          <th>Jumlah</th>
+                          <th>Persentase</th>
+                          <th>Trend</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td>
+                            <span class="badge bg-success">Disetujui</span>
+                          </td>
+                          <td>185</td>
+                          <td>74%</td>
+                          <td>
+                            <span class="text-success">
+                              <i class="fas fa-arrow-up me-1"></i> 12%
+                            </span>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td>
+                            <span class="badge bg-warning text-dark"
+                              >Menunggu</span
+                            >
+                          </td>
+                          <td>42</td>
+                          <td>17%</td>
+                          <td>
+                            <span class="text-warning">
+                              <i class="fas fa-minus me-1"></i> 0%
+                            </span>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td>
+                            <span class="badge bg-danger">Ditolak</span>
+                          </td>
+                          <td>23</td>
+                          <td>9%</td>
+                          <td>
+                            <span class="text-danger">
+                              <i class="fas fa-arrow-down me-1"></i> 5%
+                            </span>
+                          </td>
+                        </tr>
+                      </tbody>
+                      <tfoot class="table-light">
+                        <tr>
+                          <td><strong>Total</strong></td>
+                          <td><strong>250</strong></td>
+                          <td><strong>100%</strong></td>
+                          <td></td>
+                        </tr>
+                      </tfoot>
+                    </table>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Footer -->
+        <footer class="bg-white border-top py-3 px-4">
+          <div class="container-fluid">
+            <div class="row">
+              <div class="col-md-6">
+                <p class="mb-md-0 text-muted">
+                  © 2025 Dinas Pertanian Kabupaten Bulukumba
+                </p>
+              </div>
+              <div class="col-md-6 text-md-end">
+                <a href="#" class="text-decoration-none text-muted me-3"
+                  >Bantuan</a
+                >
+                <a href="#" class="text-decoration-none text-muted me-3"
+                  >Kebijakan Privasi</a
+                >
+                <a href="#" class="text-decoration-none text-muted"
+                  >Syarat & Ketentuan</a
+                >
+              </div>
+            </div>
+          </div>
+        </footer>
+      </div>
+    </div>
+
+    <!-- Bootstrap Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.0.0/dist/chart.umd.min.js"></script>
+    <!-- Custom JS -->
+    <script src="../assets/js/main.js"></script>
+  </body>
+</html>

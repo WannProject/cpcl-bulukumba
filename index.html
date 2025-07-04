@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CPCL - Sistem Informasi Dinas Pertanian Kabupaten Bulukumba</title>
+    <!-- Bootstrap CSS -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <!-- Font Awesome -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <!-- Google Fonts -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="assets/css/style.css" />
+  </head>
+  <body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-success sticky-top">
+      <div class="container">
+        <a class="navbar-brand d-flex align-items-center" href="#">
+          <img
+            src="assets/img/logo.svg"
+            alt="Logo Dinas Pertanian"
+            class="me-2"
+            height="40"
+          />
+          <span
+            >CPCL Dinas Pertanian<br /><small class="fs-6 fw-light"
+              >Kab. Bulukumba</small
+            ></span
+          >
+        </a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarNav"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav ms-auto">
+            <li class="nav-item">
+              <a class="nav-link active" href="#home">Beranda</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#tentang">Tentang</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#bantuan">Bantuan</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#kontak">Kontak</a>
+            </li>
+            <li class="nav-item ms-lg-2 mt-2 mt-lg-0">
+              <a href="login.html" class="btn btn-light">Masuk</a>
+            </li>
+            <li class="nav-item ms-lg-2 mt-2 mt-lg-0">
+              <a href="register.html" class="btn btn-outline-light">Daftar</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header
+      id="home"
+      class="hero-section text-white text-center d-flex align-items-center"
+    >
+      <div class="container">
+        <div class="row justify-content-center">
+          <div class="col-lg-8">
+            <h1 class="display-4 fw-bold mb-4 animation-fade-in">
+              Sistem Informasi CPCL
+            </h1>
+            <p class="lead mb-5 animation-fade-in-up">
+              Calon Petani Calon Lahan untuk Bantuan Tanaman Pangan<br />Dinas
+              Pertanian Kabupaten Bulukumba
+            </p>
+            <div
+              class="d-grid gap-2 d-sm-flex justify-content-sm-center animation-fade-in-up"
+            >
+              <a href="register.html" class="btn btn-primary btn-lg px-4 gap-3"
+                >Daftar Kelompok Tani</a
+              >
+              <a href="login.html" class="btn btn-outline-light btn-lg px-4"
+                >Masuk</a
+              >
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- Info Section -->
+    <section id="tentang" class="py-5">
+      <div class="container">
+        <div class="row justify-content-center mb-5">
+          <div class="col-lg-8 text-center">
+            <h2 class="fw-bold mb-4">Tentang CPCL</h2>
+            <p class="lead">
+              Sistem Informasi Calon Petani Calon Lahan (CPCL) adalah platform
+              digital untuk mengelola pengajuan bantuan tanaman pangan bagi
+              kelompok tani di Kabupaten Bulukumba.
+            </p>
+          </div>
+        </div>
+        <div class="row g-4">
+          <div class="col-md-4">
+            <div class="card h-100 border-0 shadow-sm hover-card">
+              <div class="card-body text-center p-4">
+                <div
+                  class="feature-icon bg-primary bg-gradient rounded-circle mb-4"
+                >
+                  <i class="fas fa-users fa-2x text-white"></i>
+                </div>
+                <h5 class="card-title fw-bold">Kelompok Tani</h5>
+                <p class="card-text">
+                  Daftarkan kelompok tani Anda dan ajukan bantuan tanaman pangan
+                  secara online dengan mudah.
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="card h-100 border-0 shadow-sm hover-card">
+              <div class="card-body text-center p-4">
+                <div
+                  class="feature-icon bg-success bg-gradient rounded-circle mb-4"
+                >
+                  <i class="fas fa-seedling fa-2x text-white"></i>
+                </div>
+                <h5 class="card-title fw-bold">Bantuan Tanaman</h5>
+                <p class="card-text">
+                  Dapatkan akses ke berbagai program bantuan tanaman pangan dari
+                  Dinas Pertanian.
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="card h-100 border-0 shadow-sm hover-card">
+              <div class="card-body text-center p-4">
+                <div
+                  class="feature-icon bg-info bg-gradient rounded-circle mb-4"
+                >
+                  <i class="fas fa-chart-line fa-2x text-white"></i>
+                </div>
+                <h5 class="card-title fw-bold">Pantau Status</h5>
+                <p class="card-text">
+                  Lacak status pengajuan bantuan Anda secara real-time melalui
+                  dasbor yang informatif.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Process Section -->
+    <section id="bantuan" class="bg-light py-5">
+      <div class="container">
+        <div class="row justify-content-center mb-5">
+          <div class="col-lg-8 text-center">
+            <h2 class="fw-bold mb-4">Proses Pengajuan Bantuan</h2>
+            <p class="lead">
+              Ikuti langkah-langkah berikut untuk mengajukan bantuan tanaman
+              pangan melalui sistem CPCL.
+            </p>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-lg-12">
+            <div class="timeline">
+              <div class="timeline-item">
+                <div class="timeline-number bg-primary text-white">1</div>
+                <div class="timeline-content">
+                  <h5 class="fw-bold">Pendaftaran</h5>
+                  <p>
+                    Daftarkan kelompok tani Anda melalui formulir pendaftaran
+                    online.
+                  </p>
+                </div>
+              </div>
+              <div class="timeline-item">
+                <div class="timeline-number bg-primary text-white">2</div>
+                <div class="timeline-content">
+                  <h5 class="fw-bold">Pengajuan Bantuan</h5>
+                  <p>
+                    Isi formulir pengajuan bantuan dengan data yang lengkap dan
+                    akurat.
+                  </p>
+                </div>
+              </div>
+              <div class="timeline-item">
+                <div class="timeline-number bg-primary text-white">3</div>
+                <div class="timeline-content">
+                  <h5 class="fw-bold">Verifikasi Admin</h5>
+                  <p>Admin akan memverifikasi data pengajuan bantuan Anda.</p>
+                </div>
+              </div>
+              <div class="timeline-item">
+                <div class="timeline-number bg-primary text-white">4</div>
+                <div class="timeline-content">
+                  <h5 class="fw-bold">Persetujuan Kepala Dinas</h5>
+                  <p>
+                    Kepala Dinas akan menyetujui atau menolak pengajuan bantuan.
+                  </p>
+                </div>
+              </div>
+              <div class="timeline-item">
+                <div class="timeline-number bg-success text-white">5</div>
+                <div class="timeline-content">
+                  <h5 class="fw-bold">Penerimaan Bantuan</h5>
+                  <p>
+                    Setelah disetujui, bantuan akan disalurkan kepada kelompok
+                    tani.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="py-5">
+      <div class="container">
+        <div class="row g-4 text-center">
+          <div class="col-md-4">
+            <div class="stat-item">
+              <div class="stat-number fw-bold text-primary">125+</div>
+              <div class="stat-label">Kelompok Tani Terdaftar</div>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="stat-item">
+              <div class="stat-number fw-bold text-success">250+</div>
+              <div class="stat-label">Bantuan Disalurkan</div>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="stat-item">
+              <div class="stat-number fw-bold text-info">1500+</div>
+              <div class="stat-label">Hektar Lahan Terbantu</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="kontak" class="bg-light py-5">
+      <div class="container">
+        <div class="row justify-content-center mb-5">
+          <div class="col-lg-8 text-center">
+            <h2 class="fw-bold mb-4">Hubungi Kami</h2>
+            <p class="lead">
+              Jika Anda memiliki pertanyaan atau membutuhkan bantuan, silakan
+              hubungi kami.
+            </p>
+          </div>
+        </div>
+        <div class="row g-4">
+          <div class="col-md-4">
+            <div class="card h-100 border-0 shadow-sm">
+              <div class="card-body text-center p-4">
+                <div class="contact-icon mb-3">
+                  <i class="fas fa-map-marker-alt fa-2x text-primary"></i>
+                </div>
+                <h5 class="card-title fw-bold">Alamat</h5>
+                <p class="card-text">
+                  Jl. Jendral Sudirman No. 123<br />Kabupaten Bulukumba<br />Sulawesi
+                  Selatan 92511
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="card h-100 border-0 shadow-sm">
+              <div class="card-body text-center p-4">
+                <div class="contact-icon mb-3">
+                  <i class="fas fa-phone-alt fa-2x text-primary"></i>
+                </div>
+                <h5 class="card-title fw-bold">Telepon</h5>
+                <p class="card-text">+62 413 123456<br />+62 812 3456 7890</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="card h-100 border-0 shadow-sm">
+              <div class="card-body text-center p-4">
+                <div class="contact-icon mb-3">
+                  <i class="fas fa-envelope fa-2x text-primary"></i>
+                </div>
+                <h5 class="card-title fw-bold">Email</h5>
+                <p class="card-text">
+                  info@pertanian.bulukumbakab.go.id<br />bantuan@pertanian.bulukumbakab.go.id
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-white py-4">
+      <div class="container">
+        <div class="row g-4">
+          <div class="col-lg-4">
+            <h5 class="fw-bold mb-3">CPCL Dinas Pertanian</h5>
+            <p>
+              Sistem Informasi Calon Petani Calon Lahan untuk Bantuan Tanaman
+              Pangan Kabupaten Bulukumba.
+            </p>
+          </div>
+          <div class="col-lg-2">
+            <h5 class="fw-bold mb-3">Navigasi</h5>
+            <ul class="list-unstyled">
+              <li><a href="#home" class="text-white-50">Beranda</a></li>
+              <li><a href="#tentang" class="text-white-50">Tentang</a></li>
+              <li><a href="#bantuan" class="text-white-50">Bantuan</a></li>
+              <li><a href="#kontak" class="text-white-50">Kontak</a></li>
+            </ul>
+          </div>
+          <div class="col-lg-3">
+            <h5 class="fw-bold mb-3">Tautan Penting</h5>
+            <ul class="list-unstyled">
+              <li><a href="login.html" class="text-white-50">Masuk</a></li>
+              <li><a href="register.html" class="text-white-50">Daftar</a></li>
+              <li><a href="#" class="text-white-50">Kebijakan Privasi</a></li>
+              <li><a href="#" class="text-white-50">Syarat & Ketentuan</a></li>
+            </ul>
+          </div>
+          <div class="col-lg-3">
+            <h5 class="fw-bold mb-3">Ikuti Kami</h5>
+            <div class="social-links">
+              <a href="#" class="text-white me-2"
+                ><i class="fab fa-facebook fa-lg"></i
+              ></a>
+              <a href="#" class="text-white me-2"
+                ><i class="fab fa-twitter fa-lg"></i
+              ></a>
+              <a href="#" class="text-white me-2"
+                ><i class="fab fa-instagram fa-lg"></i
+              ></a>
+              <a href="#" class="text-white me-2"
+                ><i class="fab fa-youtube fa-lg"></i
+              ></a>
+            </div>
+          </div>
+        </div>
+        <hr class="my-4" />
+        <div class="row">
+          <div class="col-md-6">
+            <p class="mb-md-0">
+              © 2025 Dinas Pertanian Kabupaten Bulukumba. Hak Cipta Dilindungi.
+            </p>
+          </div>
+          <div class="col-md-6 text-md-end">
+            <p class="mb-0">
+              Dibangun dengan <i class="fas fa-heart text-danger"></i> untuk
+              petani Indonesia
+            </p>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Bootstrap Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Custom JS -->
+    <script src="assets/js/main.js"></script>
+  </body>
+</html>

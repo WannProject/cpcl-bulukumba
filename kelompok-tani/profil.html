@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Profil Kelompok Tani - CPCL Dinas Pertanian</title>
+    <!-- Bootstrap CSS -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <!-- Font Awesome -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <!-- Google Fonts -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="../assets/css/style.css" />
+    <link rel="stylesheet" href="../assets/css/dashboard.css" />
+  </head>
+  <body>
+    <div class="d-flex" id="wrapper">
+      <!-- Sidebar -->
+      <div class="bg-white border-end" id="sidebar-wrapper">
+        <div class="sidebar-heading text-center py-4 border-bottom">
+          <img
+            src="../assets/img/logo.svg"
+            alt="Logo"
+            height="50"
+            class="mb-2"
+          />
+          <div class="fs-5 fw-semibold">CPCL Pertanian</div>
+          <div class="small text-muted">Kelompok Tani</div>
+        </div>
+        <div class="list-group list-group-flush sidebar-nav">
+          <a
+            href="dashboard.html"
+            class="list-group-item list-group-item-action py-3"
+          >
+            <i class="fas fa-tachometer-alt me-2"></i> Dashboard
+          </a>
+          <a
+            href="pengajuan.html"
+            class="list-group-item list-group-item-action py-3"
+          >
+            <i class="fas fa-file-alt me-2"></i> Pengajuan Bantuan
+          </a>
+          <a
+            href="profil.html"
+            class="list-group-item list-group-item-action active py-3"
+          >
+            <i class="fas fa-user me-2"></i> Profil Kelompok
+          </a>
+        </div>
+        <div class="mt-auto border-top p-3">
+          <a href="../login.html" class="btn btn-outline-danger d-block">
+            <i class="fas fa-sign-out-alt me-2"></i> Keluar
+          </a>
+        </div>
+      </div>
+
+      <!-- Page Content -->
+      <div id="page-content-wrapper">
+        <!-- Top navigation -->
+        <nav
+          class="navbar navbar-expand-lg navbar-light bg-white border-bottom py-3"
+        >
+          <div class="container-fluid">
+            <button class="btn" id="sidebarToggle">
+              <i class="fas fa-bars"></i>
+            </button>
+            <div class="d-none d-md-block ms-2">
+              <h5 class="mb-0">Profil Kelompok Tani</h5>
+            </div>
+            <div class="ms-auto d-flex align-items-center">
+              <div class="dropdown me-3">
+                <a
+                  class="nav-link dropdown-toggle"
+                  href="#"
+                  role="button"
+                  id="notificationDropdown"
+                  data-bs-toggle="dropdown"
+                  aria-expanded="false"
+                >
+                  <i class="fas fa-bell position-relative">
+                    <span
+                      class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger"
+                      >3</span
+                    >
+                  </i>
+                </a>
+                <ul
+                  class="dropdown-menu dropdown-menu-end shadow-sm"
+                  aria-labelledby="notificationDropdown"
+                >
+                  <li><h6 class="dropdown-header">Notifikasi</h6></li>
+                  <li><hr class="dropdown-divider" /></li>
+                  <li>
+                    <a class="dropdown-item" href="#"
+                      >Pengajuan telah diterima</a
+                    >
+                  </li>
+                  <li>
+                    <a class="dropdown-item" href="#"
+                      >Proses verifikasi selesai</a
+                    >
+                  </li>
+                  <li>
+                    <a class="dropdown-item" href="#"
+                      >Jadwal penerimaan bantuan</a
+                    >
+                  </li>
+                </ul>
+              </div>
+              <div class="dropdown">
+                <a
+                  class="nav-link dropdown-toggle d-flex align-items-center"
+                  href="#"
+                  role="button"
+                  id="userDropdown"
+                  data-bs-toggle="dropdown"
+                  aria-expanded="false"
+                >
+                  <div
+                    class="avatar-sm bg-primary rounded-circle text-white me-2 d-flex align-items-center justify-content-center"
+                  >
+                    KT
+                  </div>
+                  <span class="d-none d-md-block">Kelompok Tani Makmur</span>
+                </a>
+                <ul
+                  class="dropdown-menu dropdown-menu-end shadow-sm"
+                  aria-labelledby="userDropdown"
+                >
+                  <li>
+                    <a class="dropdown-item" href="profil.html"
+                      ><i class="fas fa-user me-2"></i> Profil</a
+                    >
+                  </li>
+                  <li><hr class="dropdown-divider" /></li>
+                  <li>
+                    <a class="dropdown-item" href="../login.html"
+                      ><i class="fas fa-sign-out-alt me-2"></i> Keluar</a
+                    >
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </nav>
+
+        <!-- Main content -->
+        <div class="container-fluid p-4">
+          <div class="row">
+            <div class="col-lg-4 mb-4">
+              <div class="card border-0 shadow-sm animation-fade-in">
+                <div class="card-body text-center p-4">
+                  <div class="mb-4">
+                    <img
+                      src="../assets/img/placeholder-kelompok.jpg"
+                      alt="Foto Kelompok"
+                      class="rounded-circle img-thumbnail"
+                      style="width: 150px; height: 150px; object-fit: cover"
+                    />
+                  </div>
+                  <h5 class="fw-bold mb-1">Kelompok Tani Makmur</h5>
+                  <p class="text-muted mb-3">KT-2025-001</p>
+                  <div class="d-grid">
+                    <button
+                      class="btn btn-outline-primary"
+                      data-bs-toggle="modal"
+                      data-bs-target="#uploadPhotoModal"
+                    >
+                      <i class="fas fa-camera me-2"></i> Ganti Foto
+                    </button>
+                  </div>
+                </div>
+                <div class="card-footer bg-white border-0 p-4">
+                  <div class="d-flex justify-content-between mb-2">
+                    <span>Status</span>
+                    <span class="badge bg-success">Aktif</span>
+                  </div>
+                  <div class="d-flex justify-content-between mb-2">
+                    <span>Anggota</span>
+                    <span class="fw-bold">25 Orang</span>
+                  </div>
+                  <div class="d-flex justify-content-between">
+                    <span>Bergabung</span>
+                    <span class="fw-bold">2020</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-lg-8">
+              <div class="card border-0 shadow-sm animation-fade-in">
+                <div class="card-header bg-white py-3">
+                  <ul class="nav nav-tabs card-header-tabs">
+                    <li class="nav-item">
+                      <a
+                        class="nav-link active"
+                        href="#info"
+                        data-bs-toggle="tab"
+                        >Informasi Umum</a
+                      >
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link" href="#kontak" data-bs-toggle="tab"
+                        >Kontak</a
+                      >
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link" href="#keamanan" data-bs-toggle="tab"
+                        >Keamanan</a
+                      >
+                    </li>
+                  </ul>
+                </div>
+                <div class="card-body p-4">
+                  <div class="tab-content">
+                    <!-- Informasi Umum Tab -->
+                    <div class="tab-pane fade show active" id="info">
+                      <form class="needs-validation" novalidate>
+                        <div class="row g-3">
+                          <div class="col-md-6">
+                            <label class="form-label">Nama Kelompok</label>
+                            <input
+                              type="text"
+                              class="form-control"
+                              value="Kelompok Tani Makmur"
+                              required
+                            />
+                          </div>
+                          <div class="col-md-6">
+                            <label class="form-label">Nomor Registrasi</label>
+                            <input
+                              type="text"
+                              class="form-control"
+                              value="KT-2025-001"
+                              readonly
+                            />
+                          </div>
+                          <div class="col-md-6">
+                            <label class="form-label">Tahun Berdiri</label>
+                            <input
+                              type="number"
+                              class="form-control"
+                              value="2020"
+                              required
+                            />
+                          </div>
+                          <div class="col-md-6">
+                            <label class="form-label">Jumlah Anggota</label>
+                            <input
+                              type="number"
+                              class="form-control"
+                              value="25"
+                              required
+                            />
+                          </div>
+                          <div class="col-12">
+                            <label class="form-label">Alamat</label>
+                            <textarea class="form-control" rows="3" required>
+Desa Makmur, Kec. Gantarang</textarea
+                            >
+                          </div>
+                          <div class="col-md-6">
+                            <label class="form-label">Desa/Kelurahan</label>
+                            <input
+                              type="text"
+                              class="form-control"
+                              value="Desa Makmur"
+                              required
+                            />
+                          </div>
+                          <div class="col-md-6">
+                            <label class="form-label">Kecamatan</label>
+                            <select class="form-select" required>
+                              <option>Gantarang</option>
+                              <option>Ujung Bulu</option>
+                              <option>Ujung Loe</option>
+                              <option>Bontobahari</option>
+                              <option>Bontotiro</option>
+                            </select>
+                          </div>
+                          <div class="col-12">
+                            <button type="submit" class="btn btn-primary">
+                              <i class="fas fa-save me-2"></i> Simpan Perubahan
+                            </button>
+                          </div>
+                        </div>
+                      </form>
+                    </div>
+
+                    <!-- Kontak Tab -->
+                    <div class="tab-pane fade" id="kontak">
+                      <form class="needs-validation" novalidate>
+                        <div class="row g-3">
+                          <div class="col-md-6">
+                            <label class="form-label">Nama Ketua</label>
+                            <input
+                              type="text"
+                              class="form-control"
+                              value="Budi Santoso"
+                              required
+                            />
+                          </div>
+                          <div class="col-md-6">
+                            <label class="form-label">NIK Ketua</label>
+                            <input
+                              type="text"
+                              class="form-control"
+                              value="7371XXXXXXXXXXXXXX"
+                              required
+                            />
+                          </div>
+                          <div class="col-md-6">
+                            <label class="form-label">Nomor HP</label>
+                            <input
+                              type="tel"
+                              class="form-control"
+                              value="081234567890"
+                              required
+                            />
+                          </div>
+                          <div class="col-md-6">
+                            <label class="form-label">Email</label>
+                            <input
+                              type="email"
+                              class="form-control"
+                              value="budi@example.com"
+                            />
+                          </div>
+                          <div class="col-12">
+                            <button type="submit" class="btn btn-primary">
+                              <i class="fas fa-save me-2"></i> Simpan Perubahan
+                            </button>
+                          </div>
+                        </div>
+                      </form>
+                    </div>
+
+                    <!-- Keamanan Tab -->
+                    <div class="tab-pane fade" id="keamanan">
+                      <form class="needs-validation" novalidate>
+                        <div class="row g-3">
+                          <div class="col-md-6">
+                            <label class="form-label">Username</label>
+                            <input
+                              type="text"
+                              class="form-control"
+                              value="kt_makmur"
+                              readonly
+                            />
+                          </div>
+                          <div class="col-12">
+                            <label class="form-label">Password Lama</label>
+                            <input
+                              type="password"
+                              class="form-control"
+                              required
+                            />
+                          </div>
+                          <div class="col-md-6">
+                            <label class="form-label">Password Baru</label>
+                            <input
+                              type="password"
+                              class="form-control"
+                              required
+                            />
+                          </div>
+                          <div class="col-md-6">
+                            <label class="form-label"
+                              >Konfirmasi Password</label
+                            >
+                            <input
+                              type="password"
+                              class="form-control"
+                              required
+                            />
+                          </div>
+                          <div class="col-12">
+                            <button type="submit" class="btn btn-primary">
+                              <i class="fas fa-key me-2"></i> Ubah Password
+                            </button>
+                          </div>
+                        </div>
+                      </form>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Footer -->
+        <footer class="bg-white border-top py-3 px-4">
+          <div class="container-fluid">
+            <div class="row">
+              <div class="col-md-6">
+                <p class="mb-md-0 text-muted">
+                  © 2025 Dinas Pertanian Kabupaten Bulukumba
+                </p>
+              </div>
+              <div class="col-md-6 text-md-end">
+                <a href="#" class="text-decoration-none text-muted me-3"
+                  >Bantuan</a
+                >
+                <a href="#" class="text-decoration-none text-muted me-3"
+                  >Kebijakan Privasi</a
+                >
+                <a href="#" class="text-decoration-none text-muted"
+                  >Syarat & Ketentuan</a
+                >
+              </div>
+            </div>
+          </div>
+        </footer>
+      </div>
+    </div>
+
+    <!-- Bootstrap Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Custom JS -->
+    <script src="../assets/js/main.js"></script>
+  </body>
+</html>
